@@ -1,3 +1,3 @@
 Options -Indexes 
-ErrorDocument 404 /sipprex/nomame.html
-ErrorDocument 403 /sipprex/notiene.html
+ErrorDocument 404 /rikoshop/error404.php
+ErrorDocument 403 /rikoshop/error403.php
