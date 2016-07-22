@@ -41,7 +41,7 @@ else{
                             <h3>Modificar un anuncio</h3>
                         </div>";
     print $head;
-    $id = $_GET['id'];
+    $id = strip_tags(trim($_GET['id']));
     $sql = "SELECT * FROM destacados WHERE id_destacado = ?";
     $params = array($id);
     $data = Database::getRow($sql, $params);

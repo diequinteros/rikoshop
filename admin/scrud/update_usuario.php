@@ -2,7 +2,7 @@
 	require("../bibliotecas/database.php");
 	$id = null;
     if(!empty($_GET['id'])) {
-        $id = $_GET['id'];
+        $id = strip_tags(trim($_GET['id']));
     }
     if($id == null) {
         header("location: read_usuario.php");

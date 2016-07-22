@@ -34,7 +34,7 @@
         <?php
         $busque = null;
         if(!empty($_GET['busque'])) {
-            $busque = $_GET['busque'];
+            $busque = strip_tags(trim($_GET['busque']));
         }
         if($busque == null) {
             header("location: index.php");
@@ -43,7 +43,7 @@
         Database::connect();
         $page = null;
         if(!empty($_GET['page'])) {
-            $page = $_GET['page'];
+            $page = strip_tags(trim($_GET['page']));
         }
         if($page == null) {
             $page = 1;

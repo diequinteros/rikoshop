@@ -16,7 +16,7 @@
       }
        //Se verifica que la variable id de categoria este cargada
        if(!empty($_GET['id'])) {
-            $id = $_GET['id'];
+            $id = strip_tags(trim($_GET['id']));
         }
         else {
             header("location:index.php");
@@ -59,7 +59,7 @@
         $page = null;
         //Se toma la variable de paginacion
         if(!empty($_GET['page'])) {
-            $page = $_GET['page'];
+            $page = strip_tags(trim($_GET['page']));
         }
         //Si la variable de paginacion esta vacia se pone como 1
         if($page == null) {

@@ -4,7 +4,7 @@ require("../../bibliotecas/database.php");
 //Se verifica que el id tenga un valor
 if(!empty($_GET['id'])) 
 {
-    $id = $_GET['id'];
+    $id = strip_tags(trim($_GET['id']));
 }
 //De lo contrario devuelve al index
 else

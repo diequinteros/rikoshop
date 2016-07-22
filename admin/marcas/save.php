@@ -39,7 +39,7 @@ else{
                             <h3>Modificar una Marca</h3>
                         </div>";
     print $head;
-    $id = $_GET['id'];
+    $id = strip_tags(trim($_GET['id']));
     $sql = "SELECT * FROM marcas WHERE id_marca = ?";
     $params = array($id);
     $data = Database::getRow($sql, $params);

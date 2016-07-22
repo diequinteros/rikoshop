@@ -30,7 +30,7 @@
       $valo = 1;
         Database::connect();
         #Se obtiene id del producto
-        $id = $_GET ['id'];
+        $id = strip_tags(trim($_GET ['id']));
         #Se seleccionan los datos del producto seleccionado
         $sql = "SELECT id_producto, nombre_producto, descripcion_pro, precio, marca, categoria FROM productos, marcas, categorias WHERE productos.id_marca = marcas.id_marca AND productos.id_categoria = categorias.id_categoria AND id_producto = ?";
         $params = array($id);

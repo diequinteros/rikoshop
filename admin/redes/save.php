@@ -40,7 +40,7 @@ else{
                             <h3>Modificar una Red Social</h3>
                         </div>";
     print $head;
-    $id = $_GET['id'];
+    $id = strip_tags(trim($_GET['id']));
     $sql = "SELECT * FROM redes WHERE id_red = ?";
     $params = array($id);
     $data = Database::getRow($sql, $params);
