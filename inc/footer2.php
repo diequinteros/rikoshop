@@ -5,7 +5,6 @@
                 <h5 class="white-text">RikoShop</h5>
                 <p class="grey-text text-lighten-4">Siguenos en nuestras redes sociales:</p>
                 <?php
-                  include '../bibliotecas/database.php';
                   $sql = "SELECT * FROM redes ORDER BY id_red";
                   $params = null;
                   $data = Database::getRows($sql, $params);

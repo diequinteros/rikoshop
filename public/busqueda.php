@@ -5,7 +5,15 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8"/>
     </head>
     <body class="purple lighten-5">
-      <?php include '../inc/menu2.php' ?>
+      <?php
+       include '../inc/menu2.php';
+       if(!empty($_POST)){
+          if($_POST["search"]!=null)
+          {
+              header("location: busqueda.php?busque=$_POST[search]");
+          }
+      } 
+      ?>
       <br>
       <nav class="container blue darken-1 z-depth-2">
             <form>

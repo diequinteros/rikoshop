@@ -16,7 +16,7 @@
       <!-- C O N T E N E D O R -->
       <div id="contenedor" class="container white z-depth-5">  
           <h2 class="center-align">Agregar categoria</h2>
-           <form  action="<?php $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
+           <form  action="<?php $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data" autocomplete="off">
                <div class="input-field col s6">
                     <input  name="categoria" type="text" class="validate" value="<?php print($ncategoria); ?>">
                     <label for="categoria">Categoria</label>

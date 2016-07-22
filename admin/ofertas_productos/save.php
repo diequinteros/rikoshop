@@ -75,7 +75,7 @@ if(!empty($_POST))
 }
 ?>
 <!-- Se crea nuestro formulario general ya sea de creacion o modificacion -->
-            <form method='post' class='row' enctype='multipart/form-data'>
+            <form method='post' class='row' enctype='multipart/form-data' autocomplete="off">
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <!-- Mediante las siguientes sentencias se llena el comboBox con los datos de Productos -->

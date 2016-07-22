@@ -57,7 +57,7 @@ else
     </head>
     <body>
         <div class="card-panel paneles">
-            <form method='post' class='row' enctype='multipart/form-data'>
+            <form method='post' class='row' enctype='multipart/form-data' autocomplete="off">
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>assignment_ind</i>

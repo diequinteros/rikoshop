@@ -13,7 +13,7 @@
       <!-- C O N T E N E D O R -->
       <div id="contenedor" class="container white z-depth-5">  
           <h2 class="center-align">Comentarios</h2>
-           <form  action="<?php $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
+           <form  action="<?php $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data" autocomplete="off">
                <div class = "row">
                <div class="input-field col s12 m8 l4">
 		          	  <i class="material-icons prefix">search</i>

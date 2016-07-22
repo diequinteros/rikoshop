@@ -14,7 +14,7 @@
       <!-- C O N T E N E D O R -->
       <div id="contenedor" class="container white z-depth-5">  
           <h2 class="center-align">Agregar sucursal</h2>
-           <form  action="<?php $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
+           <form  action="<?php $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data" autocomplete="off">
                <div class="input-field col s6">
 						      <select name="cmbpais" class="browser-default" required>
 						          <?php

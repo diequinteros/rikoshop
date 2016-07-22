@@ -95,7 +95,7 @@ if(!empty($_POST))
 }
 ?>
 <!-- Se crea nuestro formulario general ya sea de creacion o modificacion -->
-            <form method='post' class='row' enctype='multipart/form-data'>
+            <form method='post' class='row' enctype='multipart/form-data' autocomplete="off">
                 <div class='row'>
                     <div class='file-field input-field col s12 m6'>
                         <div class='btn'>

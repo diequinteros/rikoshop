@@ -13,7 +13,7 @@
       <br>
       <!-- C O N T E N E D O R -->
       <div id="contenedor" class="container white z-depth-5">  
-        <form method="post" name="frmMenu" enctype="multipart/form-data" class="center-align">  
+        <form method="post" name="frmMenu" enctype="multipart/form-data" class="center-align" autocomplete="off">  
           <input type="hidden" name="id" value="<?php print($id);?>"/>
             	<button class="btn waves-effect waves-light btn-large red" type="submit" name="action">
             		Si<i id="img_btn" class="material-icons left">delete</i>

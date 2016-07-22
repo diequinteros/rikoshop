@@ -45,7 +45,7 @@ if(!empty($_POST))
 		<div class="card-panel paneles">
 			<div class="titulo">
 				<h3>¿Eliminar Marca?</h3>
-				<form method='post' class='row'>
+				<form method='post' class='row' autocomplete="off">
 					<input type='hidden' name='id' value='<?php print($id); ?>'/>
 					<button type='submit' class='btn red'><i class='material-icons right'>check_circle</i>Si</button>
 					<a href='index.php' class='btn grey'><i class='material-icons right'>cancel</i>No</a>

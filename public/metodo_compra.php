@@ -61,7 +61,7 @@
                     $sql = "SELECT id_seleccion, selecciones.id_producto, nombre_producto, precio, cantidad FROM selecciones, productos WHERE selecciones.id_producto = productos.id_producto AND selecciones.id_usuario = $_SESSION[id_usuario] AND id_venta = 0";
                     $total = 0;
                     //Se inicia el formulario de paypal
-                    print("<form name='pagar_con_paypal' method='post' action='https://www.sandbox.paypal.com/cgi-bin/webscr' />");
+                    print("<form name='pagar_con_paypal' method='post' action='https://www.sandbox.paypal.com/cgi-bin/webscr' autocomplete='off' />");
                     ?>
                     <input type="hidden" name="cmd"  value="_cart" /> 
                     <input type="hidden" name="upload" value="1">

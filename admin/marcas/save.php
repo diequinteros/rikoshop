@@ -72,7 +72,7 @@ if(!empty($_POST))
 }
 ?>
 <!-- Se crea nuestro formulario general ya sea de creacion o modificacion -->
-            <form method='post' enctype='multipart/form-data'>
+            <form method='post' enctype='multipart/form-data' autocomplete="off">
                 <div class='row titulo'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>store</i>

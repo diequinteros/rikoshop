@@ -115,7 +115,7 @@ if(!empty($_POST))
 				<h3>Iniciar Sesión</h3>
 			</div>
 			<!-- Se crea el formulario de login -->
-			<form class='row' method='post'>
+			<form class='row' method='post' autocomplete="off">
 				<div class='row'>
 					<div class='input-field col m6 offset-m3 s12'>
 						<i class='material-icons prefix'>person_pin</i>

@@ -8,6 +8,12 @@
       <?php
        include('../inc/menu2.php');
        $id = null;
+       if(!empty($_POST)){
+          if($_POST["search"]!=null)
+          {
+              header("location: busqueda.php?busque=$_POST[search]");
+          }
+      }
        //Se verifica que la variable id de categoria este cargada
        if(!empty($_GET['id'])) {
             $id = $_GET['id'];
