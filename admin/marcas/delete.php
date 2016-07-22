@@ -15,7 +15,7 @@ else
 //Se envian los parametros a nuestra clase executeRows para la funcion delete 
 if(!empty($_POST))
 {
-	$id = $_POST['id'];
+	$id = strip_tags(trim($_POST['id']));
 	try 
 	{
 		$sql = "DELETE FROM marcas WHERE id_marca = ?";

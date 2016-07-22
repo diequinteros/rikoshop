@@ -2,8 +2,8 @@
 	if(!empty($_POST))
 	{
 		//Campos del formulario.
-        $categoria = $_POST['categoria'];
-        $descripcion = $_POST['descripcion'];
+        $categoria = strip_tags(trim($_POST['categoria']));
+        $descripcion = strip_tags(trim($_POST['descripcion']));
 	    function mthAgregar($categoria, $descripcion)
 	    {
 	    	require("../bibliotecas/database.php");

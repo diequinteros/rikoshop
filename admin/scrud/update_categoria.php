@@ -11,8 +11,8 @@
 	if(!empty($_POST))
 	{
 		//Post values
-		$ncategoria = $_POST['categoria'];
-	    $descripcion = $_POST['descripcion'];
+		$ncategoria = strip_tags(trim($_POST['categoria']));
+	    $descripcion = strip_tags(trim($_POST['descripcion']));
 	    function mthModificar($ncategoria, $descripcion, $id)
 	    {
 

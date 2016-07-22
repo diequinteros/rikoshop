@@ -48,7 +48,7 @@ else{
 
 if(!empty($_POST))
 {
-  	$nombre_marca = $_POST['marca'];
+  	$nombre_marca = strip_tags(trim($_POST['marca']));
     //Se declaran las consultas
     try 
     {

@@ -52,7 +52,7 @@ else{
 if(!empty($_POST))
 {
   	$archivo = $_FILES['imagen'];
-    $titulo = $_POST['titulo'];
+    $titulo = strip_tags(trim($_POST['titulo']));
     if($archivo['name'] != null)
     {
         $base64 = Imagen::validateImage($archivo);

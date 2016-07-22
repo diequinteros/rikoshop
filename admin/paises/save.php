@@ -48,7 +48,7 @@ else{
 
 if(!empty($_POST))
 {
-  	$nombre_pais = $_POST['pais'];
+  	$nombre_pais = strip_tags(trim($_POST['pais']));
     //Se declaran las consultas
     try 
     {

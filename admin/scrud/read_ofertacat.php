@@ -3,7 +3,7 @@
 				Database::connect();
     			if(isset($_POST['txtBuscar']) != "")
     			{
-    				$buscar = $_POST['txtBuscar'];
+    				$buscar = strip_tags(trim($_POST['txtBuscar']));
     				$consulta = "SELECT id_oferta_c, ofertas_categoria.id_categoria, categoria, porcentaje FROM ofertas_categoria, categorias WHERE categorias.id_categoria = ofertas_categoria.id_categoria AND categorias.categoria LIKE '%$buscar%'";
     			}
     			else

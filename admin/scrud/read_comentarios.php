@@ -3,7 +3,7 @@
 				Database::connect();
     			if(isset($_POST['txtBuscar']) != "")
     			{
-    				$buscar = $_POST['txtBuscar'];
+    				$buscar = strip_tags(trim($_POST['txtBuscar']));
     				$consulta = "SELECT id_comentario, usuario, comentarios.id_usuario, titulo, contenido FROM comentarios, usuarios WHERE comentarios.id_usuario = usuarios.id_usuario AND (titulo LIKE '%$buscar%' OR contenido LIKE '%$buscar%')";
     			}
     			else

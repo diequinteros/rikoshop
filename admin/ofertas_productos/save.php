@@ -50,8 +50,8 @@ else{
 
 if(!empty($_POST))
 {
-  	$id_producto = $_POST['id_producto'];
-    $porcentaje = $_POST['porcentaje'];
+  	$id_producto = strip_tags(trim($_POST['id_producto']));
+    $porcentaje = strip_tags(trim($_POST['porcentaje']));
     //Se declaran las consultas
     try 
     {

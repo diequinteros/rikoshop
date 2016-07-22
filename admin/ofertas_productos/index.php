@@ -36,7 +36,7 @@
 		<?php
 		if(!empty($_POST))
 		{
-			$search = trim($_POST['buscar']);
+			$search = strip_tags(trim($_POST['buscar']));
 			$sql = "SELECT * FROM ofertas_producto, productos WHERE ofertas_producto.id_producto = productos.id_producto AND nombre_producto LIKE ? ORDER BY id_oferta_p";
 			$params = array("%$search%");
 		}

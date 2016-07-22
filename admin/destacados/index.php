@@ -36,7 +36,7 @@
 		<?php
 		if(!empty($_POST))
 		{
-			$search = trim($_POST['buscar']);
+			$search = strip_tags(trim($_POST['buscar']));
 			$sql = "SELECT * FROM destacados WHERE titulo LIKE ? ORDER BY id_destacado";
 			$params = array("%$search%");
 		}

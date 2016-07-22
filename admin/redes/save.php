@@ -50,8 +50,8 @@ else{
 
 if(!empty($_POST))
 {
-  	$red = $_POST['red'];
-    $url = $_POST['url'];
+  	$red = strip_tags(trim($_POST['red']));
+    $url = strip_tags(trim($_POST['url']));
     //Se declaran las consultas
     try 
     {

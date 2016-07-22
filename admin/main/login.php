@@ -8,11 +8,11 @@ session_start(true);
 if(!empty($_POST))
 {
 	$_POST = validator::validateForm($_POST);
-  	$codigo = $_POST['codigo'];
-  	$clave = $_POST['clave'];
+  	$codigo = strip_tags(trim($_POST['codigo']));
+  	$clave = strip_tags(trim($_POST['clave']));
   	try
     {
-		//Se verifica que el codigo y la clave no esten vacios
+		//Se verifica que el codigo) y la clave no esten vacios
       	if($codigo != "" && $clave != "")
   		{
 			  //Se realiza la consulta para ver si el codigo ingresado es de un ex-alumno, un alumno o un administrador

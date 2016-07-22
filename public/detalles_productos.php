@@ -46,9 +46,9 @@
                 //Se obtienen los valores del post
                 $_POST = Validator::validateForm($_POST);
                 $idusuario = $_SESSION['id_usuario'];
-                $titulo = $_POST['coment'];
-                $contenido = $_POST['contecoment'];
-                $valo = $_POST['valo'];
+                $titulo = strip_tags(trim($_POST['coment']));
+                $contenido = strip_tags(trim($_POST['contecoment']));
+                $valo = strip_tags(trim($_POST['valo']));
                 //Se verifica que el usuario este logueado
                 if($idusuario == "")
                 {

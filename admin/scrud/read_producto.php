@@ -5,7 +5,7 @@ $datos2;
 				Database::connect();
     			if(isset($_POST['txtBuscar']) != "")
     			{
-    				$buscar = $_POST['txtBuscar'];
+    				$buscar = strip_tags(trim($_POST['txtBuscar']));
     				$consulta = "SELECT id_producto, nombre_producto, descripcion_pro, precio, marcas.marca, categorias.categoria, existencia FROM productos, marcas, categorias WHERE productos.id_marca = marcas.id_marca AND productos.id_categoria = categorias.id_categoria AND nombre_producto LIKE '%$buscar%'";
 					
     			}

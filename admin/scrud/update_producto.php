@@ -19,12 +19,12 @@
     
 	if(!empty($_POST))
 	{
-		$nombre = $_POST['nombre'];
-        $descripcion = $_POST['descripcion'];
-        $precio = $_POST['precio'];
-        $marca = $_POST['marca'];
-        $categoria = $_POST['idcategoria'];
-		$existencia = $_POST['existencia'];
+		$nombre = strip_tags(trim($_POST['nombre']));
+        $descripcion = strip_tags(trim($_POST['descripcion']));
+        $precio = strip_tags(trim($_POST['precio']));
+        $marca = strip_tags(trim($_POST['marca']));
+        $categoria = strip_tags(trim($_POST['idcategoria']));
+		$existencia = strip_tags(trim($_POST['existencia']));
 		$imagen1 = $_FILES['imagen1'];
 		$imagen2 = $_FILES['imagen2'];
 		$imagen3 = $_FILES['imagen3'];

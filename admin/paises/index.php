@@ -36,7 +36,7 @@
 		<?php
 		if(!empty($_POST))
 		{
-			$search = trim($_POST['buscar']);
+			$search = strip_tags(trim($_POST['buscar']));
 			$sql = "SELECT * FROM paises WHERE nombre_pais LIKE ? ORDER BY id_pais";
 			$params = array("%$search%");
 		}

@@ -8,7 +8,7 @@
       <?php
        include '../inc/menu2.php';
        if(!empty($_POST)){
-          if($_POST["search"]!=null)
+          if(strip_tags(trim($_POST["search"]))!=null)
           {
               header("location: busqueda.php?busque=$_POST[search]");
           }

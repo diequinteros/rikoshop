@@ -6,13 +6,13 @@ session_start(true);
 if(!empty($_POST))
 {
     $_POST = Validator::validateForm($_POST);
-  	$contraseña = $_POST['contraseña'];
-  	$nombre = $_POST['nombre1'];
-    $apellido = $_POST['apellido1'];
-    $telefono = $_POST['telefono'];
-    $ocupacion = $_POST['ocupacion'];
-    $correo = $_POST['correo_electronico'];
-    $observacion = $_POST['observacion'];
+  	$contraseña = strip_tags(trim($_POST['contraseña']));
+  	$nombre = strip_tags(trim($_POST['nombre1']));
+    $apellido = strip_tags(trim($_POST['apellido1']));
+    $telefono = strip_tags(trim($_POST['telefono']));
+    $ocupacion = strip_tags(trim($_POST['ocupacion']));
+    $correo = strip_tags(trim($_POST['correo_electronico']));
+    $observacion = strip_tags(trim($_POST['observacion']));
 
     try 
     {

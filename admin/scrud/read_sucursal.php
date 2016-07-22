@@ -3,7 +3,7 @@
 				Database::connect();
     			if(isset($_POST['txtBuscar']) != "")
     			{
-    				$buscar = $_POST['txtBuscar'];
+    				$buscar = strip_tags(trim($_POST['txtBuscar']));
     				$consulta = "SELECT id_sucusales, paises.nombre_pais, estado, ciudad, direccion, telefono FROM sucursales, paises WHERE sucursales.id_pais = paises.id_pais  AND paises.nombre_pais LIKE '%$buscar%'";
     			}
     			else

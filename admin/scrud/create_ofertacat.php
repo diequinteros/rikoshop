@@ -2,8 +2,8 @@
 	if(!empty($_POST))
 	{
 		//Campos del formulario.
-        $idcategoria = $_POST['idcategoria'];
-        $porcentaje = $_POST['porcentaje'];
+        $idcategoria = strip_tags(trim($_POST['idcategoria']));
+        $porcentaje = strip_tags(trim($_POST['porcentaje']));
 	    function mthAgregar($idcategoria, $porcentaje)
 	    {
 	    	require("../bibliotecas/database.php");
