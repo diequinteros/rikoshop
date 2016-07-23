@@ -66,12 +66,12 @@
                         $card .= "<img src='data:image/*;base64,$img[imagen]' class='activator' height='300'>";
                         $card .= "</div>
                         <div class='card-content'>";
-                        $card .= "<span class='card-title activator grey-text text-darken-4'>$datos[nombre_producto]<i class='material-icons right'>more_vert</i></span>";
+                        $card .= "<span class='card-title activator grey-text text-darken-4'>".htmlspecialchars($datos['nombre_producto'])."<i class='material-icons right'>more_vert</i></span>";
                         $card .= "<p><a href='detalles_producto.php?id=$datos[id_producto]'>Mas información</a></p>";
                         $card .= "</div>
                         <div class='card-reveal'>";
-                        $card .= "<span class='card-title grey-text text-darken-4'>$datos[nombre_producto]<i class='material-icons right'>close</i></span>";
-                        $card .=  "<p>$datos[descripcion_pro]</p>
+                        $card .= "<span class='card-title grey-text text-darken-4'>".htmlspecialchars($datos['nombre_producto'])."<i class='material-icons right'>close</i></span>";
+                        $card .=  "<p>".htmlspecialchars($datos['descripcion_pro'])."</p>
                         </div>
                     </div>";
                     print($card);

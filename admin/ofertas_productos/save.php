@@ -104,7 +104,7 @@ if(!empty($_POST))
                     <br>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>%</i>
-                        <input id='porcentaje' type="text" name='porcentaje' class='validate' length='4' maxlength='4' value='<?php print($porcentaje); ?>'/>
+                        <input id='porcentaje' type="text" name='porcentaje' class='validate' length='4' maxlength='4' value='<?php print(htmlspecialchars($porcentaje)); ?>'/>
                         <label class="active" for='porcentaje'>Porcentaje</label>
                     </div>
                 </div>

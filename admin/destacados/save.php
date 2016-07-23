@@ -108,7 +108,7 @@ if(!empty($_POST))
                     </div>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>edit</i>
-                        <input id='titulo' type="text" name='titulo' class='validate' length='50' maxlength='50' value='<?php print($titulo); ?>'/>
+                        <input id='titulo' type="text" name='titulo' class='validate' length='50' maxlength='50' value='<?php print(htmlspecialchars($titulo)); ?>'/>
                         <label class="active" for='titulo'>Título</label>
                     </div>
                 </div>

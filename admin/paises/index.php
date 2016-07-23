@@ -62,8 +62,8 @@
 				foreach($data as $row)
 				{
 					$tabla .= 	"<tr>
-									<td>$row[id_pais]</td>
-									<td>$row[nombre_pais]</td>
+									<td>".htmlspecialchars($row['id_pais'])."</td>
+									<td>".htmlspecialchars($row['nombre_pais'])."</td>
 									<td>
 										<a href='save.php?id=$row[id_pais]' class='btn blue'><i class='material-icons'>edit</i></a>
 										<a href='delete.php?id=$row[id_pais]' class='btn red'><i class='material-icons'>delete</i></a>

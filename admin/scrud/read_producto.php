@@ -53,11 +53,11 @@ $datos2;
 						}	
 						}     							
 							$tabla .= "<p id='texto_tabla'>";
-								$tabla .= "<strong>Nombre producto: </strong>$datos[nombre_producto]<br>";
-								$tabla .= "<strong>Descripcion: </strong>$datos[descripcion_pro]<br>";
-								$tabla .= "<strong>Precio: </strong>$datos[precio]<br>";
-								$tabla .= "<strong>Marca: </strong>$datos[marca]<br>";
-								$tabla .= "<strong>Existencias: </strong>$datos[existencia]<br>";
+								$tabla .= "<strong>Nombre producto: </strong>".htmlspecialchars($datos['nombre_producto'])."<br>";
+								$tabla .= "<strong>Descripcion: </strong>".htmlspecialchars($datos['descripcion_pro'])."<br>";
+								$tabla .= "<strong>Precio: </strong>".htmlspecialchars($datos[precio])."<br>";
+								$tabla .= "<strong>Marca: </strong>".htmlspecialchars($datos['marca'])."<br>";
+								$tabla .= "<strong>Existencias: </strong>".htmlspecialchars($datos['existencia'])."<br>";
 								
 							$tabla .= "</p>";
 							$tabla .= "<div class = 'row'>";

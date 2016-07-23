@@ -37,19 +37,19 @@
 			   			     </select>
 					      </div>
                <div class="input-field col s6">
-                    <input  name="estado" type="text" class="validate" value="<?php print($estado); ?>">
+                    <input  name="estado" type="text" class="validate" value="<?php print(htmlspecialchars($estado)); ?>">
                     <label for="nestado">Estado</label>
                </div>
                <div class="input-field col s6">
-                    <input  name="ciudad" type="text" class="validate" value="<?php print($ciudad); ?>">
+                    <input  name="ciudad" type="text" class="validate" value="<?php print(htmlspecialchars($ciudad)); ?>">
                     <label for="nciudad">Ciudad</label>
                </div>
                <div class="input-field col s6">
-                    <input  name="direccion" type="text" class="validate" value="<?php print($direccion); ?>">
+                    <input  name="direccion" type="text" class="validate" value="<?php print(htmlspecialchars($direccion)); ?>">
                     <label for="ndireccion">Dirección</label>
                </div>
                <div class="input-field col s6">
-                    <input  name="telefono" type="text" class="validate" value="<?php print($telefono); ?>">
+                    <input  name="telefono" type="text" class="validate" value="<?php print(htmlspecialchars($telefono)); ?>">
                     <label for="telefono">Telefono</label>
                </div>
                <div class="row">

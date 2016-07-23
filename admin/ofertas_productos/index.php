@@ -63,9 +63,9 @@
 				foreach($data as $row)
 				{
 					$tabla .= 	"<tr>
-									<td>$row[id_oferta_p]</td>
-									<td>$row[nombre_producto]</td>
-									<td>$row[porcentaje]</td>
+									<td>".htmlspecialchars($row['id_oferta_p'])."</td>
+									<td>".htmlspecialchars($row['nombre_producto'])."</td>
+									<td>".htmlspecialchars($row['porcentaje'])."</td>
 									<td>
 										<a href='save.php?id=$row[id_oferta_p]' class='btn blue'><i class='material-icons'>edit</i></a>
 										<a href='delete.php?id=$row[id_oferta_p]' class='btn red'><i class='material-icons'>delete</i></a>

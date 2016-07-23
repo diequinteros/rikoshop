@@ -18,10 +18,10 @@
 					$tabla .= "<li class='collection-item dismissable'>";
 						$tabla .= "<div>";     							
 							$tabla .= "<p id='texto_tabla'>";
-								$tabla .= "<strong>Id de venta: </strong>$datos[id_venta]<br>";
-								$tabla .= "<strong>Usuario: </strong>$datos[usuario]<br>";
-								$tabla .= "<strong>Total: </strong>$datos[total]<br>";
-								$tabla .= "<strong>Fecha: </strong>$datos[Fecha]<br>";
+								$tabla .= "<strong>Id de venta: </strong>".htmlspecialchars($datos['id_venta'])."<br>";
+								$tabla .= "<strong>Usuario: </strong>".htmlspecialchars($datos['usuario'])."<br>";
+								$tabla .= "<strong>Total: </strong>".htmlspecialchars($datos['total'])."<br>";
+								$tabla .= "<strong>Fecha: </strong>".htmlspecialchars($datos['Fecha'])."<br>";
 							$tabla .= "</p>";
 							$tabla .= "<div class = 'row'>";
 							$tabla .= "<a class='btn waves-effect waves-light red col s12 m4 l2 offset-l1 offset-m1' href='delete_venta.php?id=$datos[id_venta]'>Eliminar<i id='img_btn' class='material-icons left'>delete</i></a>";

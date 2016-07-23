@@ -76,7 +76,7 @@ if(!empty($_POST))
                 <div class='row titulo'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>store</i>
-                        <input id='marca' type='text' name='marca' class='validate' length='25' maxlength='25' value='<?php print($nombre_marca); ?>' required/>
+                        <input id='marca' type='text' name='marca' class='validate' length='25' maxlength='25' value='<?php print(htmlspecialchars($nombre_marca)); ?>' required/>
                         <label class="active" for='marca'>Marca</label>
                     </div>
                     <br>

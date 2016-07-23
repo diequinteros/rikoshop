@@ -25,7 +25,7 @@
 				    			    $opciones = ""; //Arreglo de datos
 				    			    foreach(Database::$connection->query($consulta) as $datos)
 				    			    {
-									      $opciones .= "<option value='$datos[id_categoria]'";
+									      $opciones .= "<option value='".htmlspecialchars($datos['id_categoria'])."'";
 									      if($categoria == $datos['id_categoria'])
 									      {
 										      $opciones .= " selected";
@@ -39,7 +39,7 @@
 			   			     </select>
 					      </div>
                <div class="input-field col s6">
-                    <input  name="porcentaje" type="text" class="validate" value="<?php print($porcentaje);?>">
+                    <input  name="porcentaje" type="text" class="validate" value="<?php print(htmlspecialchars($porcentaje));?>">
                     <label for="porcentaje">Descuento en decimal</label>
                </div>
                <div class="row">

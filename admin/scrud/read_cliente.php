@@ -18,12 +18,12 @@
 					$tabla .= "<li class='collection-item dismissable'>";
 						$tabla .= "<div>";     							
 							$tabla .= "<p id='texto_tabla'>";
-								$tabla .= "<strong>Usuario: </strong>$datos[usuario]<br>";
-								$tabla .= "<strong>E-mail: </strong>$datos[email]<br>";
-								$tabla .= "<strong>Contraseña: </strong type = 'password'>$datos[clave]<br>";
-								$tabla .= "<strong>Nombre: </strong>$datos[nombre]<br>";
-								$tabla .= "<strong>Apellido: </strong>$datos[apellido]<br>";
-								$tabla .= "<strong>Tipo: </strong>$datos[tipo]<br>";
+								$tabla .= "<strong>Usuario: </strong>".htmlspecialchars($datos['usuario'])."<br>";
+								$tabla .= "<strong>E-mail: </strong>".htmlspecialchars($datos['email'])."<br>";
+								$tabla .= "<strong>Contraseña: </strong type = 'password'>".htmlspecialchars($datos['clave'])."<br>";
+								$tabla .= "<strong>Nombre: </strong>".htmlspecialchars($datos['nombre'])."<br>";
+								$tabla .= "<strong>Apellido: </strong>".htmlspecialchars($datos['apellido'])."<br>";
+								$tabla .= "<strong>Tipo: </strong>".htmlspecialchars($datos['tipo'])."<br>";
 							$tabla .= "</p>";
 							$tabla .= "<div class = 'row'>";
 							$tabla .= "<a class='btn waves-effect waves-light red col s12 m4 l2 offset-l1 offset-m1' href='delete_cliente.php?id=$datos[id_usuario]'>Eliminar<i id='img_btn' class='material-icons left'>delete</i></a>";

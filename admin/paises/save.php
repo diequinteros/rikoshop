@@ -76,7 +76,7 @@ if(!empty($_POST))
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>flag</i>
-                        <input id='pais' type="text" name='pais' class='validate' length='50' maxlength='50' value='<?php print($nombre_pais); ?>'/>
+                        <input id='pais' type="text" name='pais' class='validate' length='50' maxlength='50' value='<?php print(htmlspecialchars($nombre_pais)); ?>'/>
                         <label class="active" for='pais'>Nombre del País</label>
                     </div>
                 </div>

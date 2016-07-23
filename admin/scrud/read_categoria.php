@@ -18,8 +18,8 @@
 					$tabla .= "<li class='collection-item dismissable'>";
 						$tabla .= "<div>";     							
 							$tabla .= "<p id='texto_tabla'>";
-								$tabla .= "<strong>Categoria: </strong>$datos[categoria]<br>";
-								$tabla .= "<strong>Descripción: </strong>$datos[descripcion_cat]<br>";
+								$tabla .= "<strong>Categoria: </strong>".htmlspecialchars($datos['categoria'])."<br>";
+								$tabla .= "<strong>Descripción: </strong>".htmlspecialchars($datos['descripcion_cat'])."<br>";
 							$tabla .= "</p>";
 							$tabla .= "<div class = 'row'>";
 							$tabla .= "<a class='btn waves-effect waves-light light-blue col s12 m4 l2' href='update_categoria.php?id=$datos[id_categoria]'>Modificar<i id='img_btn' class='material-icons left'>mode_edit</i></a>";

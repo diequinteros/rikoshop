@@ -77,7 +77,7 @@
       ?>
       <!-- C O N T E N E D O R -->
       <div class="container white z-depth-5">
-      <h1><?php print($nombre_produc); ?></h1>  
+      <h1><?php print(htmlspecialchars($nombre_produc)); ?></h1>  
       <div class="row">
         <!-- I N I C I O - D E - S L I D E R -->
         <div class="col s12 m6 l6">
@@ -120,11 +120,11 @@
         </a>
         <!-- Se muestras los datos del producto -->
             <li class="divider"></li>
-            <h6>Precio: <?php print($precio); ?></h6>
+            <h6>Precio: <?php print(htmlspecialchars($precio)); ?></h6>
             <li class="divider"></li>
             <h6>Envio: Gratis</h6>
             <li class="divider"></li>
-            <h6>Marca: <?php print($marca); ?></h6>
+            <h6>Marca: <?php print(htmlspecialchars($marca)); ?></h6>
             <li class="divider"></li>
             <div class="row">
             <h6 class="col s6">Cantidad:</h6><input name="canti" type="text" class="validate col s6">
@@ -144,13 +144,13 @@
             <li>
             <!-- Se muestra la descripcion del producto -->
                 <div class="collapsible-header">Descripcion</div>
-                <div class="collapsible-body"><p><?php print($descripcion); ?></p></div>
+                <div class="collapsible-body"><p><?php print(htmlspecialchars($descripcion)); ?></p></div>
             </li>
             <li>
                 <div class="collapsible-header">Marca</div>
                 <div class="collapsible-body">
                 <!-- Se muestra la marca del producto -->
-                    <p><?php print($marca); ?></p>
+                    <p><?php print(htmlspecialchars($marca)); ?></p>
                     </div>
             </li>
          </ul>
@@ -167,9 +167,9 @@
                foreach (Database::getRows($coment, null) as $comentarios) {
                   $licoment = "<li class='collection-item avatar'>
                         <i class='material-icons circle blue'>person</i>
-                        <span class='title'>$comentarios[usuario]</span>
-                        <p>$comentarios[titulo]<br>
-                        $comentarios[contenido]
+                        <span class='title'>".htmlspecialchars($comentarios['usuario'])."</span>
+                        <p>".htmlspecialchars($comentarios['titulo'])."<br>
+                        ".htmlspecialchars($comentarios['contenido'])."
                         </p>
                         <a class='secondary-content'>";
                         for ($i=0; $i < $comentarios['valoracion'] ; $i++) { 

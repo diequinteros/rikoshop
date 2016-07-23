@@ -79,12 +79,12 @@ if(!empty($_POST))
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>language</i>
-                        <input id='red' type='text' name='red' class='validate' length='25' maxlength='25' value='<?php print($red); ?>' required/>
+                        <input id='red' type='text' name='red' class='validate' length='25' maxlength='25' value='<?php print(htmlspecialchars($red)); ?>' required/>
                         <label class="active" for='red'>Nombre de la Red</label>
                     </div>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>link</i>
-                        <input id='url' type='text' name='url' class='validate' length='100' maxlength='100' value='<?php print($url); ?>' required/>
+                        <input id='url' type='text' name='url' class='validate' length='100' maxlength='100' value='<?php print(htmlspecialchars($url)); ?>' required/>
                         <label class="active" for='url'>URL</label>
                     </div>
                 </div>
