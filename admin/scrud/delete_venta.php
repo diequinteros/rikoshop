@@ -1,7 +1,7 @@
 <?php
     $id = null;
     if(!empty($_GET['id'])) {
-        $id = strip_tags(trim($_GET['id']));
+        $id = strip_tags(trim(base64_decode($_GET['id'])));
     }
     if($id == null) {
         header("location: read_ventas.php");

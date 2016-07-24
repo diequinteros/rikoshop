@@ -61,12 +61,13 @@
 								<tbody>";
 				foreach($data as $row)
 				{
+					$dataE = base64_encode($row['id_marca']);
 					$tabla .= 	"<tr>
 									<td>".htmlspecialchars($row['id_marca'])."</td>
 									<td>".htmlspecialchars($row[marca])."</td>";
 					$tabla .=	"<td>
-										<a href='save.php?id=$row[id_marca]' class='btn blue'><i class='material-icons'>edit</i></a>
-										<a href='delete.php?id=$row[id_marca]' class='btn red'><i class='material-icons'>delete</i></a>
+										<a href='save.php?id={$dataE}' class='btn blue'><i class='material-icons'>edit</i></a>
+										<a href='delete.php?id={$dataE}' class='btn red'><i class='material-icons'>delete</i></a>
 									</td>
 								</tr>";
 				}

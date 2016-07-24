@@ -14,6 +14,7 @@
     			$tabla = ""; //Arreglo de datos
     			foreach(Database::$connection->query($consulta) as $datos)
     			{
+					$dataE = base64_encode($datos['id_comentario']);
 					$tabla .= "<ul class='collection'>";
 					$tabla .= "<li class='collection-item dismissable'>";
 						$tabla .= "<div>";     							

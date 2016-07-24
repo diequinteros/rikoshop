@@ -7,11 +7,11 @@
 	$idf3 = null;
 	$idf4 = null;
     if(!empty($_GET['id'])) {
-        $id = strip_tags(trim($_GET['id']));
-		$idf1 = strip_tags(trim($_GET['idf1']));
-		$idf2 = strip_tags(trim($_GET['idf2']));
-		$idf3 = strip_tags(trim($_GET['idf3']));
-		$idf4 = strip_tags(trim($_GET['idf4']));
+        $id = strip_tags(trim(base64_decode($_GET['id'])));
+		$idf1 = strip_tags(trim(base64_decode($_GET['idf1'])));
+		$idf2 = strip_tags(trim(base64_decode($_GET['idf2'])));
+		$idf3 = strip_tags(trim(base64_decode($_GET['idf3'])));
+		$idf4 = strip_tags(trim(base64_decode($_GET['idf4'])));
     }
     if($id == null) {
         header("location: read_producto.php");

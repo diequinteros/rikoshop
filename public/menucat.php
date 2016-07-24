@@ -33,8 +33,9 @@
       //Se seleccionan el id de categoria y su nombre
       $sql = "SELECT id_categoria, categoria FROM categorias";
       foreach (Database::getRows($sql, null) as $categorias) {
+          $dataE = base64_encode($categorias['id_categoria']);
           //por cada categoria se imprimira su opcion con el nombre y la direccion mas el id de la categoria
-          print("<a href=categoria.php?id=$categorias[id_categoria] class='collection-item'>$categorias[categoria]</a>");
+          print("<a href=categoria.php?id={$dataE} class='collection-item'>$categorias[categoria]</a>");
       }
       ?>
       </div>

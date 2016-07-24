@@ -62,6 +62,7 @@
 								<tbody>";
 				foreach($data as $row)
 				{
+					$dataE = base64_encode($row['id_red']);
 					$tabla .= 	"<tr>
 									<td>".htmlspecialchars($row['id_red'])."</td>
 									<td>".htmlspecialchars($row['red'])."</td>

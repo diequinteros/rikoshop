@@ -39,7 +39,7 @@ else{
                             <h3>Modificar un Pais</h3>
                         </div>";
     print $head;
-    $id = strip_tags(trim($_GET['id']));
+    $id = strip_tags(trim(base64_decode($_GET['id'])));
     $sql = "SELECT * FROM paises WHERE id_pais = ?";
     $params = array($id);
     $data = Database::getRow($sql, $params);

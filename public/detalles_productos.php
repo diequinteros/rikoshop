@@ -12,7 +12,8 @@
       if(!empty($_POST)){
           if($_POST["search"]!=null)
           {
-              header("location: busqueda.php?busque=$_POST[search]");
+              $dataE = base64_encode($_POST['search']);
+              header("location: busqueda.php?busque={$dataE}");
           }
       }
       ?>
@@ -30,7 +31,7 @@
       $valo = 1;
         Database::connect();
         #Se obtiene id del producto
-        $id = strip_tags(trim($_GET ['id']));
+        $id = strip_tags(trim(base64_decode($_GET['id'])));
         #Se seleccionan los datos del producto seleccionado
         $sql = "SELECT id_producto, nombre_producto, descripcion_pro, precio, marca, categoria FROM productos, marcas, categorias WHERE productos.id_marca = marcas.id_marca AND productos.id_categoria = categorias.id_categoria AND id_producto = ?";
         $params = array($id);
@@ -84,10 +85,10 @@
           <div id="este-st" class="slider">
             <ul class="slides materialboxed">
             <?php
-              $cons = "SELECT imagen FROM imagenes, productos WHERE imagenes.id_producto = 10";
+              $cons = "SELECT imagen FROM imagenes, productos WHERE imagenes.id_producto = ?";
               $lis = null;
               //Se cargan las imagenes del producto en el slider
-              foreach (Database::getRows($cons, null) as $imagenes) {
+              foreach (Database::getRows($cons, $id) as $imagenes) {
                   $lis = "<li>
                   <img src='data:image/*;base64,$imagenes[imagen]'>
                 <div class='caption center-align'>
@@ -109,7 +110,7 @@
         <?php
         //Se selecciona el promedio de valoraciones del producto
         $sqlvaloraciones = "SELECT AVG(valoracion) prom FROM comentarios WHERE id_producto = $id";
-        $prom =Database::getRow($sqlvaloraciones, null);
+        $prom = Database::getRow($sqlvaloraciones, null);
         $prom = round($prom['prom']);
         print("<h5 class='black-text'>Valoracion:</h5>");
         //Se impreme la valoracion

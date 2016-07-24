@@ -40,7 +40,7 @@ else{
                             <h3>Modificar una Oferta</h3>
                         </div>";
     print $head;
-    $id = strip_tags(trim($_GET['id']));
+    $id = strip_tags(trim(base64_decode($_GET['id'])));
     $sql = "SELECT * FROM ofertas_producto WHERE id_oferta_p = ?";
     $params = array($id);
     $data = Database::getRow($sql, $params);

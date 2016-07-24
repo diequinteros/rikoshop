@@ -14,6 +14,7 @@
     			$tabla = ""; //Arreglo de datos
     			foreach(Database::$connection->query($consulta) as $datos)
     			{
+					$dataE = base64_encode($datos['id_oferta_c']);
 					$tabla .= "<ul class='collection'>";
 					$tabla .= "<li class='collection-item dismissable'>";
 						$tabla .= "<div>";     							
@@ -23,7 +24,7 @@
 							$tabla .= "</p>";
 							$tabla .= "<div class = 'row'>";
 							$tabla .= "<a class='btn waves-effect waves-light light-blue col s12 m4 l2' href='update_ofertacat.php?id=$datos[id_oferta_c]'>Modificar<i id='img_btn' class='material-icons left'>mode_edit</i></a>";
-							$tabla .= "<a class='btn waves-effect waves-light red col s12 m4 l2 offset-l1 offset-m1' href='delete_ofertacat.php?id=$datos[id_categoria]'>Eliminar<i id='img_btn' class='material-icons left'>delete</i></a>";
+							$tabla .= "<a class='btn waves-effect waves-light red col s12 m4 l2 offset-l1 offset-m1' href='delete_ofertacat.php?id=$datos[id_oferta_c]'>Eliminar<i id='img_btn' class='material-icons left'>delete</i></a>";
 							$tabla .= "</div>";
 						$tabla .= "</div>";
 					$tabla .= "</li>";

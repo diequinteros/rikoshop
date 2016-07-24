@@ -15,7 +15,7 @@ else
 //Se envian los parametros a nuestra clase executeRows para la funcion delete 
 if(!empty($_POST))
 {
-	$id = $_POST['id'];
+	$id = base64_decode($_POST['id']);
 	try 
 	{
 		$sql = "DELETE FROM destacados WHERE id_destacado = ?";

@@ -11,12 +11,13 @@
        if(!empty($_POST)){
           if($_POST["search"]!=null)
           {
-              header("location: busqueda.php?busque=$_POST[search]");
+              $dataE = base64_encode($_POST['search']);
+              header("location: busqueda.php?busque={$dataE}");
           }
       }
        //Se verifica que la variable id de categoria este cargada
        if(!empty($_GET['id'])) {
-            $id = strip_tags(trim($_GET['id']));
+            $id = strip_tags(trim(base64_decode($_GET['id'])));
         }
         else {
             header("location:index.php");
@@ -78,6 +79,7 @@
         $consulta = "SELECT * FROM productos WHERE id_categoria = $id LIMIT $page1,24";
         foreach(Database::$connection->query($consulta) as $datos)
     			{
+                    $datosE = base64_encode($datos['id_producto']);
                     //Se imprimen cada producto
                     $card = "       <!-- TARJETA 1 -->
                     <div class='card col s12 m6 l4'>
@@ -88,7 +90,7 @@
                         $card .= "</div>
                         <div class='card-content'>";
                         $card .= "<span class='card-title activator grey-text text-darken-4'>".htmlspecialchars($datos['nombre_producto'])."<i class='material-icons right'>more_vert</i></span>";
-                        $card .= "<p><a href='detalles_productos.php?id=$datos[id_producto]'>Mas información</a></p>";
+                        $card .= "<p><a href='detalles_productos.php?id={$datosE}'>Mas información</a></p>";
                         $card .= "</div>
                         <div class='card-reveal'>";
                         $card .= "<span class='card-title grey-text text-darken-4'>".htmlspecialchars($datos['nombre_producto'])."<i class='material-icons right'>close</i></span>";

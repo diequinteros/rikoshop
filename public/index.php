@@ -10,7 +10,8 @@
       if(!empty($_POST)){
           if($_POST["search"]!=null)
           {
-              header("location: busqueda.php?busque=$_POST[search]");
+              $dataE = base64_encode($_POST['search']);
+              header("location: busqueda.php?busque={$dataE}");
           }
       }
       ?>

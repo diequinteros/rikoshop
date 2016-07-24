@@ -10,7 +10,8 @@
        if(!empty($_POST)){
           if(strip_tags(trim($_POST["search"]))!=null)
           {
-              header("location: busqueda.php?busque=$_POST[search]");
+              $dataE = base64_encode($_POST['search']);
+              header("location: busqueda.php?busque={$dataE}");
           }
       } 
       ?>
@@ -34,7 +35,7 @@
         <?php
         $busque = null;
         if(!empty($_GET['busque'])) {
-            $busque = strip_tags(trim($_GET['busque']));
+            $busque = strip_tags(trim(base64_decode($_GET['busque'])));
         }
         if($busque == null) {
             header("location: index.php");
@@ -58,6 +59,7 @@
         $consulta = "SELECT * FROM productos WHERE nombre_producto LIKE '%$busque%' LIMIT $page1,24";
         foreach(Database::$connection->query($consulta) as $datos)
     			{
+                    $datosE = base64_encode($datos['id_producto']);
                     $card = "       <!-- TARJETA 1 -->
                     <div class='card col s12 m6 l4'>
                         <div class='card-image waves-effect waves-block waves-light'>";
@@ -67,7 +69,7 @@
                         $card .= "</div>
                         <div class='card-content'>";
                         $card .= "<span class='card-title activator grey-text text-darken-4'>".htmlspecialchars($datos['nombre_producto'])."<i class='material-icons right'>more_vert</i></span>";
-                        $card .= "<p><a href='detalles_producto.php?id=$datos[id_producto]'>Mas información</a></p>";
+                        $card .= "<p><a href='detalles_producto.php?id={$datosE}'>Mas información</a></p>";
                         $card .= "</div>
                         <div class='card-reveal'>";
                         $card .= "<span class='card-title grey-text text-darken-4'>".htmlspecialchars($datos['nombre_producto'])."<i class='material-icons right'>close</i></span>";
