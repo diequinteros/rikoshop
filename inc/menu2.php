@@ -1,6 +1,14 @@
 <?php
 $menu = "";
 session_start();
+if(isset($_SESSION['ses']) && isset($_SESSION['id_usuario']))
+{
+$sqlSes = "SELECT * FROM sesiones WHERE unisesion = ? AND usuario = ?";
+$params = array($_SESSION['ses'], $_SESSION['id_usuario']);
+if(Database::getRow($sqlSes,$params) == null){
+session_destroy();
+}
+}
 if(isset($_SESSION['tipo'])){
 	if($_SESSION['tipo'] == 1){
 		$menu .= "<div class='navbar-fixed'>

@@ -1,4 +1,7 @@
  <!DOCTYPE html>
+ <?php
+ require("../bibliotecas/database.php");
+ ?>
   <html>
     <head>
       <?php include '../inc/styles.php' ?>

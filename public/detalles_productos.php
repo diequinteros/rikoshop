@@ -88,7 +88,7 @@
               $cons = "SELECT imagen FROM imagenes, productos WHERE imagenes.id_producto = ?";
               $lis = null;
               //Se cargan las imagenes del producto en el slider
-              foreach (Database::getRows($cons, $id) as $imagenes) {
+              foreach (Database::getRows($cons, array($id)) as $imagenes) {
                   $lis = "<li>
                   <img src='data:image/*;base64,$imagenes[imagen]'>
                 <div class='caption center-align'>

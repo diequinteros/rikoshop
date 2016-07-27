@@ -1,6 +1,7 @@
 <!-- Primero referenciamos los archivos que enlazan las clases de conexion, las consultas y las validaciones -->
 <?php
 require("../bibliotecas/database.php");
+require("../bibliotecas/verios.php");
 //Se revisa que los campos esten vacios para validarlos y se empieza con los procesos
 if(!empty($_POST))
 {
@@ -23,11 +24,16 @@ if(!empty($_POST))
 		    	if($clave == $hash) 
 				//Una vez analizados los datos ingresados, se filtra por el tipo de usuario
 		    	{
+					session_start();
 					$_SESSION['id_usuario'] = $data['id_usuario'];
 						$_SESSION['nombre_usuario'] = $data['usuario'];
 						$_SESSION['tipo'] = $data['id_tipo'];
+						$sesU = uniqid().'_ses';
+						$_SESSION['ses'] = $sesU;
+						$sqlSes = "INSERT INTO sesiones(unisesion, usuario, os) VALUES(?, ?, ?)";
+						$parametros = array($sesU, $data['id_usuario'], os_info($uagent));
+						Database::executeRow($sqlSes, $parametros);
 					if($tipo == 1){
-						
 						header("location: ../admin/index.php");
 					}
 					if($tipo == 2){
