@@ -1,4 +1,5 @@
 <?php
+require("../bibliotecas/database.php");
 	if(!empty($_POST))
 	{
 		//Campos del formulario.
@@ -7,7 +8,7 @@
         $descripcion = strip_tags(trim($_POST['descripcion']));
 	    function mthAgregar($categoria, $descripcion)
 	    {
-	    	require("../bibliotecas/database.php");
+	    	
 			Database::connect();
 	        Database::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	        $sql = "INSERT INTO categorias(categoria, descripcion_cat) values(?, ?)";

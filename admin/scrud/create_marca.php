@@ -1,4 +1,5 @@
 <?php
+require("../bibliotecas/database.php");
 	if(!empty($_POST))
 	{
 		//Campos del formulario.
@@ -7,7 +8,7 @@
 
 	    function mthAgregar($nmarca)
 	    {
-	    	require("../bibliotecas/database.php");
+	    	
 			Database::connect();
 	        Database::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	        $sql = "INSERT INTO marcas(marca) values(?)";

@@ -29,7 +29,7 @@
 				       <a class="btn waves-effect waves-light btn-large red col s2 s12 m4 l2 offset-m1 offset-l1" href="../index.php">
 			    	          Cancelar<i id="img_btn" class="material-icons left md-36">clear</i>
 			         </a>
-               <a class="btn waves-effect waves-light btn-large red col s2 s12 m4 l2 offset-m1 offset-l1" href="http://localhost/ecomerce/admin/create_categoria.php">
+               <a class="btn waves-effect waves-light btn-large red col s2 s12 m4 l2 offset-m1 offset-l1" href="http://localhost/rikoshop/admin/create_categoria.php">
 			    	          Nuevo registro<i id="img_btn" class="material-icons left md-36"></i>
 			         </a>
                </div>
