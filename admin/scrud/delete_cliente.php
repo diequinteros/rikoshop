@@ -10,9 +10,11 @@
     if(!empty($_POST)) {
         require("../bibliotecas/database.php");
         Database::connect();   
+        //Se sanean los datos con strip_tags
         $id = strip_tags(trim($_POST['id']));
         Database::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = "DELETE FROM usuarios WHERE id_usuario = ?";
+        //Se prepara la sentencia para evitar sql injection
         $stmt = Database::$connection->prepare($sql);
         $stmt->execute(array($id));
         Database::$connection = null;

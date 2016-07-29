@@ -4,6 +4,7 @@
 	if(!empty($_POST))
 	{
 		//Campos del formulario.
+		//Se sanean los datos obtenidos con post
 		$nombre = strip_tags(trim($_POST['nombre']));
         $descripcion = strip_tags(trim($_POST['descripcion']));
         $precio = strip_tags(trim($_POST['precio']));
@@ -19,6 +20,7 @@
 			Database::connect();
 	        Database::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	        $sql = "INSERT INTO productos(nombre_producto, descripcion_pro, precio, id_marca, id_categoria, existencia) values(?, ?, ?, ?, ?, ?)";
+			//Se sanean los datos obtenidos con post
 	        $stmt = Database::$connection->prepare($sql);
 	        $stmt->execute(array($nombre, $descripcion, $precio, $marca, $categoria, $existencia));
 	        Database::$connection = null;

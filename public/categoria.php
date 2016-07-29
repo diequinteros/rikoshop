@@ -1,4 +1,7 @@
  <!DOCTYPE html>
+ <?php
+    require("../bibliotecas/database.php");
+ ?>
   <html>
     <head>
       <?php include '../inc/styles.php' ?>
@@ -25,7 +28,7 @@
         if($id == null) {
             header("location: index.php");
         }
-        require("../bibliotecas/database.php");
+        
         $nombc = "SELECT categoria FROM categorias WHERE id_categoria = ?";
         $ar = array($id);
         $nombre = Database::getRow($nombc, $ar); 

@@ -1,7 +1,9 @@
 <?php
+require("../bibliotecas/database.php");
 	if(!empty($_POST))
 	{
 		//Campos del formulario.
+		//Se sanean los datos con la funcion strip_tags()
 		$pais = strip_tags(trim($_POST['cmbPais']));
         $estado = strip_tags(trim($_POST['nestado']));
         $ciudad = strip_tags(trim($_POST['nciudad']));
@@ -10,10 +12,11 @@
 
 	    function mthAgregar($pais, $estado, $ciudad, $direccion, $telefono)
 	    {
-	    	require("../bibliotecas/database.php");
+	    	
 			Database::connect();
 	        Database::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	        $sql = "INSERT INTO sucursales(id_pais, estado, ciudad, direccion, telefono) values(?, ?, ?, ?, ?)";
+			//Se prepara la sentencia para evitar sql injection
 	        $stmt = Database::$connection->prepare($sql);
 	        $stmt->execute(array($pais, $estado, $ciudad, $direccion, $telefono));
 	        Database::$connection = null;

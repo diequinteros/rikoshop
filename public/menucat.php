@@ -1,4 +1,7 @@
  <!DOCTYPE html>
+ <?php
+    require("../bibliotecas/database.php");
+ ?>
   <html>
     <head>
       <?php include '../inc/styles.php' ?>
@@ -29,7 +32,7 @@
       <div class="container white z-depth-5">
       <div class="collection">
       <?php
-      require("../bibliotecas/database.php");
+      
       //Se seleccionan el id de categoria y su nombre
       $sql = "SELECT id_categoria, categoria FROM categorias";
       foreach (Database::getRows($sql, null) as $categorias) {

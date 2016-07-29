@@ -156,6 +156,9 @@ else
                     <a href='index.php' class='btn grey'><i class='material-icons right'>cancel</i>Cancelar</a>
                     <button type='submit' class='btn blue'><i class='material-icons right'>check_circle</i>Guardar</button>
                 </div>
+                <div>
+                    <a href='versesiones.php' class='btn grey'><i class='material-icons right'></i>Ver sesiones abiertas</a>
+                </div>
             </form>
         </div>
         <?php include '../inc/scripts.php'; ?>

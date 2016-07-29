@@ -6,6 +6,7 @@
     </head>
     <body class="purple lighten-5">
       <?php
+      require("../bibliotecas/database.php");
        include('../inc/menu2.php'); 
        ?>
       <?php
@@ -21,14 +22,14 @@
       <h2 class="center-align">Categorias</h2>
       <div class="container white z-depth-5">
       <div class="collection">
-      <a href="http://localhost/ecomerce/admin/read_usuario.php" class="collection-item">Administradores</a>
-      <a href="http://localhost/ecomerce/admin/read_categoria.php" class="collection-item">Categoria</a>
-      <a href="http://localhost/ecomerce/admin/read_cliente.php" class="collection-item">Clientes</a>
-      <a href="http://localhost/ecomerce/admin/read_coment.php" class="collection-item">Comentarios</a>
-      <a href="http://localhost/ecomerce/admin/read_ofertacat.php" class="collection-item">Ofertas por categorias</a>
-      <a href="http://localhost/ecomerce/admin/read_producto.php" class="collection-item">Productos</a>
-      <a href="http://localhost/ecomerce/admin/read_sucursal.php" class="collection-item">Sucursales</a>
-      <a href="http://localhost/ecomerce/admin/read_ventas.php" class="collection-item">Ventas</a>
+      <a href="http://localhost/rikoshop/admin/read_usuario.php" class="collection-item">Administradores</a>
+      <a href="http://localhost/rikoshop/admin/read_categoria.php" class="collection-item">Categoria</a>
+      <a href="http://localhost/rikoshop/admin/read_cliente.php" class="collection-item">Clientes</a>
+      <a href="http://localhost/rikoshop/admin/read_coment.php" class="collection-item">Comentarios</a>
+      <a href="http://localhost/rikoshop/admin/read_ofertacat.php" class="collection-item">Ofertas por categorias</a>
+      <a href="http://localhost/rikoshop/admin/read_producto.php" class="collection-item">Productos</a>
+      <a href="http://localhost/rikoshop/admin/read_sucursal.php" class="collection-item">Sucursales</a>
+      <a href="http://localhost/rikoshop/admin/read_ventas.php" class="collection-item">Ventas</a>
       </div>
       <!-- F I N - P R O D U C T O S - M A S - V E N D I D O -->          
       </div>

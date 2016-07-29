@@ -7,8 +7,9 @@
     </head>
     <body class="purple lighten-5">
       <?php
+      include("scrud/create_categoria.php");
         include("../inc/menu2.php");
-        include("scrud/create_categoria.php");
+        
         ?>  
       <!--?php include 'inc/menu.php' ?>-->
       <br>
@@ -26,7 +27,7 @@
                </div>
                <div class="row">
                    <button name="agregar" type="submit" value = "agregar" class="waves-effect waves-light btn col s12 m3 l3 offset-m2 offset-l2 light-blue"><i class="material-icons left">create</i>Agregar</button>
-                   <button name="cancelar" type="reset" value = "cancelar" class="waves-effect waves-light btn col s12 m3 l3 offset-m2 offset-l2 red"><i class="material-icons left">clear</i>Cancelar</button>
+                   <a href="read_categoria.php" name="cancelar" value = "cancelar" class="waves-effect waves-light btn col s12 m3 l3 offset-m2 offset-l2 red"><i class="material-icons left">clear</i>Cancelar</a>
                </div>
            </form>     
       </div>

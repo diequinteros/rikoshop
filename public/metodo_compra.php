@@ -2,33 +2,6 @@
 <?php
     require("../bibliotecas/database.php");
     require("../bibliotecas/validator.php"); 
-    Database::connect();
-    //SI no se esta logueado no podra acceder al carrito
-    if(!isset($_SESSION['id_usuario']))
-    {
-        //header('location:index.php');
-        $_SESSION['id_usuario'] = 1;
-    }
-    //Si el post y get estan llenos se agregan productos al carrito
-    if(!empty($_POST) && !empty($_GET))
-        {
-            $id = null;
-            $id = ["id"];
-            $cant = $_POST['canti'];
-            try 
-            {
-                if($id != null && $cant != "")
-                {
-                    $sql = "INSERT INTO selecciones(id_producto, id_usuario, cantidad) VALUES(?, ?, ?)";
-                    $params = array($id, $_SESSION['id_usuario'], $cant);
-                }
-            }
-            catch (Exception $error)
-            {
-                print("<div class='card-panel red'><i class='material-icons left'>error</i>".$error->getMessage()."</div>");
-            }
-        }
-     
 ?>
 
   <html>
@@ -37,7 +10,35 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8"/>
     </head>
     <body class="purple lighten-5">
-    <?php include '../inc/menu2.php' ?>
+    <?php
+     include '../inc/menu2.php';
+     Database::connect();
+    //SI no se esta logueado no podra acceder al carrito
+    if(!isset($_SESSION['id_usuario']))
+    {
+        header('location:index.php');
+    }
+    //Si el post esta lleno se agregan productos al carrito
+    if(!empty($_POST))
+        {
+            $id_pro = null;
+            $id_pro = $_POST["idpro"];
+            $cant = $_POST['canti'];
+            try 
+            {
+                if($id_pro != null && $cant != "")
+                {
+                    $sql = "INSERT INTO selecciones(id_producto, id_usuario, cantidad) VALUES(?, ?, ?)";
+                    $params = array($id_pro, $_SESSION['id_usuario'], $cant);
+                    Database::executeRow($sql, $params);
+                }
+            }
+            catch (Exception $error)
+            {
+                print("<div class='card-panel red'><i class='material-icons left'>error</i>".$error->getMessage()."</div>");
+            }
+        }
+     ?>
       <!-- Fin de nav -->
       <h1> Shopping card <i class="material-icons md-48">shopping_cart</i> </h1>
       <div class="container">
@@ -70,6 +71,7 @@
                     <?php
                     $num = 1;
                     //Se imprime cada producto del carrito
+                    Database::connect();
                     foreach (Database::$connection->query($sql) as $datos) {
                         $tbl = "
                                 <tr>";

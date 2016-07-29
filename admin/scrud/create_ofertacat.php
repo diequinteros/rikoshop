@@ -1,15 +1,18 @@
 <?php
+require("../bibliotecas/database.php");
 	if(!empty($_POST))
 	{
 		//Campos del formulario.
+		//Se sanean los campos obtenidos
         $idcategoria = strip_tags(trim($_POST['idcategoria']));
         $porcentaje = strip_tags(trim($_POST['porcentaje']));
 	    function mthAgregar($idcategoria, $porcentaje)
 	    {
-	    	require("../bibliotecas/database.php");
+	    	
 			Database::connect();
 	        Database::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	        $sql = "INSERT INTO ofertas_categoria(id_categoria, porcentaje) values(?, ?)";
+			//Se prepara la sentencia sql
 	        $stmt = Database::$connection->prepare($sql);
 	        $stmt->execute(array($idcategoria, $porcentaje));
 	        Database::$connection = null;

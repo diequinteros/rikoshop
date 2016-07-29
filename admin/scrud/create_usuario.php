@@ -1,7 +1,9 @@
 <?php
+require("../bibliotecas/database.php");
 	if(!empty($_POST))
 	{
 		//Campos del formulario.
+		//Se sanean los campos con la funcion strip_tags()
         $usuario = strip_tags(trim($_POST['usuario']));
 		$email = strip_tags(trim($_POST['email']));
 		$clave = strip_tags(trim($_POST['clave']));
@@ -10,10 +12,11 @@
 		$apellido = strip_tags(trim($_POST['apellido']));
 	    function mthAgregar($usuario, $email, $clave, $nombre, $apellido)
 	    {
-	    	require("../bibliotecas/database.php");
+	    	
 			Database::connect();
 	        Database::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	        $sql = "INSERT INTO usuarios(usuario, id_tipo, email, clave, nombre, apellido) values(?, 1, ?, ?, ?, ?)";
+			//Se prepara la sentencia sql para evitar sql injection
 	        $stmt = Database::$connection->prepare($sql);
 	        $stmt->execute(array($usuario, $email, $clave, $nombre, $apellido));
 	        Database::$connection = null;

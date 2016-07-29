@@ -1,4 +1,7 @@
  <!DOCTYPE html>
+ <?php
+    require("../bibliotecas/database.php");
+ ?>
   <html>
     <head>
       <?php include '../inc/styles.php' ?>
@@ -40,7 +43,7 @@
         if($busque == null) {
             header("location: index.php");
         }
-        require("../bibliotecas/database.php");
+        
         Database::connect();
         $page = null;
         if(!empty($_GET['page'])) {

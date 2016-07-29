@@ -4,6 +4,34 @@ require("../bibliotecas/database.php");
 //Se revisa que los campos esten vacios para validarlos y se empieza con los procesos
 if(!empty($_POST))
 {
+	//verifica que la variable recaptcha de post contenga una respuesta
+	if(isset($_POST["g-recaptcha-response"]) && $_POST["g-recaptcha-response"])
+	{
+		//clave secreta proporcionada por recaptcha
+		$clasecre = "6LdaPiYTAAAAAECt8Uy-aydBMZM_S4nIwS9Jjs1m";
+		//ip de maquina que accesa a nuestro sitio
+		$ip = $_SERVER["REMOTE_ADDR"];
+		//respuesta del captcha
+		$captcha = $_POST["g-recaptcha-response"];
+		//resultado devuelto de la pagina verificadora de google
+		$resultado = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$clasecre&&response=$captcha&&remoteip=$ip");
+		//decodificamos el json y lo asignamos a una variable
+		$array = json_decode($resultado, TRUE);
+		//comprobamos si nos devuelve success (exito)
+		if($array["success"])
+		{
+			
+		}
+		else {
+			//si no nos muestra un mensaje diciendo que verifiquemos
+			print("<div class='card-panel red'><i class='material-icons left'>error</i>Debe comprobar que es humano.</div>");
+		}
+	}
+	else 
+	{
+		//si no nos muestra un mensaje diciendo que verifiquemos
+		print("<div class='card-panel red'><i class='material-icons left'>error</i>Debe comprobar que es humano.</div>");
+	}
   	$usuario = $_POST['usuario'];
   	$clave = $_POST['clave'];
   	try
@@ -70,6 +98,7 @@ if(!empty($_POST))
 		<!-- Se relaciona el archivo que referencia las hojas de estilo del sitio -->
 		<?php include '../inc/styles.php'; ?>
 		<meta charset="utf-8">
+		<script src='https://www.google.com/recaptcha/api.js'></script>
 	</head>
 	<body>
 	<?php include '../inc/menu2.php'; ?>
@@ -78,7 +107,7 @@ if(!empty($_POST))
 				<h3>Iniciar Sesión</h3>
 			</div>
 			<!-- Se crea el formulario de login -->
-			<form class='row' method='post'>
+			<form class='row' method='post' autocomplete="off">
 				<div class='row'>
 					<div class='input-field col m6 offset-m3 s12'>
 						<i class='material-icons prefix'>person_pin</i>
@@ -91,9 +120,13 @@ if(!empty($_POST))
 						<label class='active black-text' for='clave'>Clave</label>
 					</div>
 				</div>
+				<div class="col l1 offset-l3 push l8">
+					<div class="g-recaptcha" data-sitekey="6LdaPiYTAAAAAGgQYXiaVM743IvkkZ6uzZtE8-vy"></div>
+				</div>
 				<div class="center-align">
 					<button type='submit' class='btn blue'><i class='material-icons right'>swap_horiz</i>Aceptar</button>
 				</div>
+				
 			</form>
 		</div>
 		<!-- Por ultimo se relaciona el archivo que enlaza los scripts del sitio -->

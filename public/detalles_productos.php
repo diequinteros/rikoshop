@@ -1,7 +1,11 @@
  <!DOCTYPE html>
   <html>
     <head>
-      <?php include '../inc/styles.php' ?>
+      <?php
+       include '../inc/styles.php';
+       #Se obtiene id del producto
+        $id = strip_tags(trim(base64_decode($_GET['id']))); 
+       ?>
       <?php require '../bibliotecas/database.php'; ?>
       <?php require '../bibliotecas/validator.php'; ?>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8"/>
@@ -30,8 +34,7 @@
       <?php
       $valo = 1;
         Database::connect();
-        #Se obtiene id del producto
-        $id = strip_tags(trim(base64_decode($_GET['id'])));
+        
         #Se seleccionan los datos del producto seleccionado
         $sql = "SELECT id_producto, nombre_producto, descripcion_pro, precio, marca, categoria FROM productos, marcas, categorias WHERE productos.id_marca = marcas.id_marca AND productos.id_categoria = categorias.id_categoria AND id_producto = ?";
         $params = array($id);
@@ -67,7 +70,7 @@
                         throw new Exception("Datos incompletos.");
                     }
                         $sql = "INSERT INTO comentarios(id_usuario, titulo, contenido, valoracion, id_producto) VALUES(?, ?, ?, ? , ?)";
-                        $params = array($_SESSION['id_usuario'], $titulo, $contenido, $valo, 10);
+                        $params = array($_SESSION['id_usuario'], $titulo, $contenido, $valo, $id);
                     Database::executeRow($sql, $params);
                 }
                 catch (Exception $error)
@@ -128,11 +131,12 @@
             <h6>Marca: <?php print(htmlspecialchars($marca)); ?></h6>
             <li class="divider"></li>
             <div class="row">
+            <input name="idpro" type="text" class="validate col s6 hide" value = "<?php print($id); ?>">
             <h6 class="col s6">Cantidad:</h6><input name="canti" type="text" class="validate col s6">
             </div>
             <li class="divider"></li>
             <div>
-                <button type = "submit" class="waves-effect waves-light btn"><i class="material-icons right">add_shopping_cart</i>Agregar a carretilla</button>
+                <button type="submit" class="waves-effect waves-light btn"><i class="material-icons right">add_shopping_cart</i>Agregar a carretilla</button>
             </div>
         </div>
         </form>
