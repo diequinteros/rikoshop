@@ -9,7 +9,12 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8"/>
     </head>
     <body class="purple lighten-5">
-    <?php include("../inc/menu2.php");?>
+    <?php
+     include("../inc/menu2.php");
+     if(!$_SESSION['tipo']==1){
+          header("location: ../public/login.php");
+        }  
+     ?>
       <br>
       <!-- C O N T E N E D O R -->
       <div id="contenedor" class="container white z-depth-5">  

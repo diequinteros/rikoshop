@@ -20,6 +20,9 @@ if(empty($_GET['id']))
                         <div class='titulo'>
                             <h3>Agregar un anuncio</h3>
                         </div>";
+        if(!$_SESSION['tipo']==1){
+          header("location: ../../public/login.php");
+        }  
     print $head;
     $id = null;
     $imagen = null;
@@ -40,6 +43,9 @@ else{
                         <div class='titulo'>
                             <h3>Modificar un anuncio</h3>
                         </div>";
+                         if(!$_SESSION['tipo']==1){
+          header("location: ../../public/login.php");
+        }
     print $head;
     $id = strip_tags(trim(base64_decode($_GET['id'])));
     $sql = "SELECT * FROM destacados WHERE id_destacado = ?";

@@ -8,6 +8,9 @@
       <?php
       require("../bibliotecas/database.php");
        include('../inc/menu2.php'); 
+       if(!$_SESSION['tipo']==1){
+          header("location: ../public/login.php");
+        }  
        ?>
       <?php
       if(!empty($_POST)){

@@ -9,7 +9,9 @@
       <?php
       include("scrud/create_categoria.php");
         include("../inc/menu2.php");
-        
+        if(!$_SESSION['tipo']==1){
+          header("location: ../public/login.php");
+        }
         ?>  
       <!--?php include 'inc/menu.php' ?>-->
       <br>

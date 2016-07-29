@@ -9,7 +9,9 @@
       <?php
       include("scrud/create_marca.php");
         include("../inc/menu2.php");
-        
+        if(!$_SESSION['tipo']==1){
+          header("location: ../public/login.php");
+        }  
         ?>  
       <br>
       <!-- C O N T E N E D O R -->

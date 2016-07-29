@@ -19,6 +19,9 @@ if(empty($_GET['id']))
                         <div class='titulo'>
                             <h3>Agregar una Marca</h3>
                         </div>";
+                         if(!$_SESSION['tipo']==1){
+          header("location: ../../public/login.php");
+        }
     print $head;
     $id = null;
     $nombre_marca = null;
@@ -38,6 +41,9 @@ else{
                         <div class='titulo'>
                             <h3>Modificar una Marca</h3>
                         </div>";
+                         if(!$_SESSION['tipo']==1){
+          header("location: ../../public/login.php");
+        }
     print $head;
     $id = strip_tags(trim(base64_decode($_GET['id'])));
     $sql = "SELECT * FROM marcas WHERE id_marca = ?";

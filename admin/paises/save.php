@@ -19,6 +19,9 @@ if(empty($_GET['id']))
                         <div class='titulo'>
                             <h3>Agregar un Pais</h3>
                         </div>";
+     if(!$_SESSION['tipo']==1){
+          header("location: ../../public/login.php");
+        }
     print $head;
     $id = null;
     $nombre_pais = null;

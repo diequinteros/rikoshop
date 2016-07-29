@@ -10,7 +10,12 @@
 		<?php include '../../inc/styles2.php'; ?>
 	</head>
 	<body>
-	<?php include '../../inc/menu2.php'; ?>
+	<?php
+	 include '../../inc/menu2.php';
+	  if(!$_SESSION['tipo']==1){
+          header("location: ../../public/login.php");
+        } 
+	 ?>
 		<div class="card-panel paneles">
 			<!-- Se crea el formulario de busqueda -->
 			<div class="titulo">

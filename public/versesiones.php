@@ -28,7 +28,7 @@
             </form>
         </nav>
       <!-- C O N T E N E D O R -->
-      <h2 class="center-align">Categorias</h2>
+      <h2 class="center-align">Sesiones abiertas</h2>
       <div class="container white z-depth-5">
       <ul class="collection">
       <?php

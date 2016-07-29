@@ -19,6 +19,9 @@ if(empty($_GET['id']))
                         <div class='titulo'>
                             <h3>Agregar una Oferta</h3>
                         </div>";
+        if(!$_SESSION['tipo']==1){
+          header("location: ../../public/login.php");
+        }
     print $head;
     $id = null;
     $id_producto = null;
@@ -39,6 +42,9 @@ else{
                         <div class='titulo'>
                             <h3>Modificar una Oferta</h3>
                         </div>";
+     if(!$_SESSION['tipo']==1){
+          header("location: ../../public/login.php");
+        }
     print $head;
     $id = strip_tags(trim(base64_decode($_GET['id'])));
     $sql = "SELECT * FROM ofertas_producto WHERE id_oferta_p = ?";
