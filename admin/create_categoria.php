@@ -7,8 +7,9 @@
     </head>
     <body class="purple lighten-5">
       <?php
+      include("scrud/create_categoria.php");
         include("../inc/menu2.php");
-        include("scrud/create_categoria.php");
+        
         ?>  
       <!--?php include 'inc/menu.php' ?>-->
       <br>

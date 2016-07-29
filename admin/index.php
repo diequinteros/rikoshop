@@ -6,6 +6,7 @@
     </head>
     <body class="purple lighten-5">
       <?php
+      require("../../bibliotecas/database.php");
        include('../inc/menu2.php'); 
        ?>
       <?php

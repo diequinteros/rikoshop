@@ -7,8 +7,8 @@
     </head>
     <body class="purple lighten-5">
       <?php
-      include("../inc/menu2.php");
         include("scrud/create_ofertacat.php")
+        include("../inc/menu2.php");
         ?>  
       <br>
       <!-- C O N T E N E D O R -->

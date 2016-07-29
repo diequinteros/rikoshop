@@ -8,9 +8,9 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8"/>
     </head>
     <body class="purple lighten-5">
-    <?php include("../inc/menu2.php");?>
       <?php
         include("scrud/update_ofertacat.php");
+        include("../inc/menu2.php");
         ?>  
       <br>
       <!-- C O N T E N E D O R -->

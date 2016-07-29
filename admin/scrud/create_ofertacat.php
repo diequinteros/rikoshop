@@ -2,6 +2,7 @@
 	if(!empty($_POST))
 	{
 		//Campos del formulario.
+		//Se sanean los campos obtenidos
         $idcategoria = strip_tags(trim($_POST['idcategoria']));
         $porcentaje = strip_tags(trim($_POST['porcentaje']));
 	    function mthAgregar($idcategoria, $porcentaje)

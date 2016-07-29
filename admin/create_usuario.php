@@ -7,9 +7,9 @@
     </head>
     <body class="purple lighten-5">
       <?php
-      include("../inc/menu2.php");
         include("scrud/create_usuario.php");
-        ?>  
+        include("../inc/menu2.php");    
+      ?>  
       <!--?php include 'inc/menu.php' ?>-->
       <br>
       <!-- C O N T E N E D O R -->

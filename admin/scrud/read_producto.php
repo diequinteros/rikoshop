@@ -1,7 +1,7 @@
 <?php
 $datos;
 $datos2;
-    			require("../bibliotecas/database.php");
+    			
 				Database::connect();
     			if(isset($_POST['txtBuscar']) != "")
     			{
