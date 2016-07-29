@@ -1,47 +1,76 @@
 <?php
 //Se relaciona la clase de la conexion a nuestra base
 require("../bibliotecas/database.php");
-
 if(!empty($_POST))
-{
-    //Se declaran las variables de la consulta
-  	$usuario = $_POST['usuario'];
-    $id_tipo = 2;
-  	$email = $_POST['email'];
-    $clave1 = $_POST['clave1'];
-    $clave2 = $_POST['clave2'];
-    $id_pais = $_POST['id_pais'];
-    $estado = $_POST['estado'];
-    $ciudad = $_POST['ciudad'];
-    $direccion = $_POST['direccion'];
-    $codigo_postal = $_POST['codigo_postal'];
-    $tarjeta = $_POST['tarjeta'];
-    $telefono = $_POST['telefono'];
-    $nombre = $_POST['nombre'];
-    $apellido = $_POST['apellido'];
-    try 
-    {
-      	if(trim($usuario) != "" && trim($email) != "" && trim($clave1) != "" && trim($clave2) != "" && trim($id_pais) != "" && trim($estado) != "" && trim($ciudad) != "" && trim($direccion) != "" && trim($codigo_postal) != "" && trim($tarjeta) != "" && trim($telefono) != "" && trim($nombre) != "" && trim($apellido) != "")
-        {
-            if($clave1 == $clave2)
-            //Se agregan los datos
-            $clave = password_hash($clave1, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO usuarios (usuario, id_tipo, email, clave, id_pais, estado, ciudad, direccion, codigo_postal, tarjeta, telefono, nombre, apellido) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            $params = array($usuario, $id_tipo, $email, $clave, $id_pais, $estado, $ciudad, $direccion, $codigo_postal, $tarjeta, $telefono, $nombre, $apellido);
-        }
-        else
-        {
-            //Si se deja algun campo vacio el sistema no deja pasar
-            throw new Exception("Debe llenar todos los campos del formulario.");
-        }
-        Database::executeRow($sql, $params);
-        header("location: index.php");
+            {
+if(isset($_POST["g-recaptcha-response"]) && $_POST["g-recaptcha-response"])
+	{
+		//clave secreta proporcionada por recaptcha
+		$clasecre = "6LdaPiYTAAAAAECt8Uy-aydBMZM_S4nIwS9Jjs1m";
+		//ip de maquina que accesa a nuestro sitio
+		$ip = $_SERVER["REMOTE_ADDR"];
+		//respuesta del captcha
+		$captcha = $_POST["g-recaptcha-response"];
+		//resultado devuelto de la pagina verificadora de google
+		$resultado = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$clasecre&&response=$captcha&&remoteip=$ip");
+		//decodificamos el json y lo asignamos a una variable
+		$array = json_decode($resultado, TRUE);
+		//comprobamos si nos devuelve success (exito)
+        
+                if($array["success"])
+                {
+                    
+                        //Se declaran las variables de la consulta
+                        $usuario = $_POST['usuario'];
+                        $id_tipo = 2;
+                        $email = $_POST['email'];
+                        $clave1 = $_POST['clave1'];
+                        $clave2 = $_POST['clave2'];
+                        $id_pais = $_POST['id_pais'];
+                        $estado = $_POST['estado'];
+                        $ciudad = $_POST['ciudad'];
+                        $direccion = $_POST['direccion'];
+                        $codigo_postal = $_POST['codigo_postal'];
+                        $tarjeta = $_POST['tarjeta'];
+                        $telefono = $_POST['telefono'];
+                        $nombre = $_POST['nombre'];
+                        $apellido = $_POST['apellido'];
+                        try 
+                        {
+                            if(trim($usuario) != "" && trim($email) != "" && trim($clave1) != "" && trim($clave2) != "" && trim($id_pais) != "" && trim($estado) != "" && trim($ciudad) != "" && trim($direccion) != "" && trim($codigo_postal) != "" && trim($tarjeta) != "" && trim($telefono) != "" && trim($nombre) != "" && trim($apellido) != "")
+                            {
+                                if($clave1 == $clave2)
+                                //Se agregan los datos
+                                $clave = password_hash($clave1, PASSWORD_DEFAULT);
+                                $sql = "INSERT INTO usuarios (usuario, id_tipo, email, clave, id_pais, estado, ciudad, direccion, codigo_postal, tarjeta, telefono, nombre, apellido) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                                $params = array($usuario, $id_tipo, $email, $clave, $id_pais, $estado, $ciudad, $direccion, $codigo_postal, $tarjeta, $telefono, $nombre, $apellido);
+                            }
+                            else
+                            {
+                                //Si se deja algun campo vacio el sistema no deja pasar
+                                throw new Exception("Debe llenar todos los campos del formulario.");
+                            }
+                            Database::executeRow($sql, $params);
+                            header("location: index.php");
+                        }
+                        catch (Exception $error)
+                        {
+                            print("<div class='card-panel red'><i class='material-icons left'>error</i>".$error->getMessage()."</div>");
+                        }
+                    
+                }
+                else {
+                    //si no nos muestra un mensaje diciendo que verifiquemos
+                    print("<div class='card-panel red'><i class='material-icons left'>error</i>Debe comprobar que es humano.</div>");
+                    }
+                
+            }
+            else 
+            {
+                //si no nos muestra un mensaje diciendo que verifiquemos
+                print("<div class='card-panel red'><i class='material-icons left'>error</i>Debe comprobar que es humano.</div>");
+            }
     }
-    catch (Exception $error)
-    {
-        print("<div class='card-panel red'><i class='material-icons left'>error</i>".$error->getMessage()."</div>");
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -50,6 +79,7 @@ if(!empty($_POST))
         <!-- Se enlazan las hojas de estilo del sitio -->
         <?php include '../inc/styles.php'; ?>
         <meta charset="utf-8">
+        <script src='https://www.google.com/recaptcha/api.js'></script>
     </head>
     <body>
     <?php include '../inc/menu2.php'; ?>
@@ -57,7 +87,7 @@ if(!empty($_POST))
             <h3>Registro de Usuario</h3>
         </div>
         <div class="card-panel paneles">
-            <form method='post' class='row' enctype='multipart/form-data'>
+            <form method='post' class='row' enctype='multipart/form-data' autocomplete="off">
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>account_circle</i>
@@ -147,6 +177,9 @@ if(!empty($_POST))
                         <label class="active" for='apellido'>Apellido:</label>
                     </div>
                 </div>
+                <div class="col l1 offset-l1 push l10">
+					<div class="g-recaptcha" data-sitekey="6LdaPiYTAAAAAGgQYXiaVM743IvkkZ6uzZtE8-vy"></div>
+				</div>
                 <div class='center-align'>
                     <a href='index.php' class='btn grey'><i class='material-icons right'>cancel</i>Cancelar</a>
                     <button type='submit' class='btn blue'><i class='material-icons right'>check_circle</i>Guardar</button>
