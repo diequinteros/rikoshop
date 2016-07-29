@@ -11,6 +11,7 @@
 	if(!empty($_POST))
 	{
 		//Post values
+		//Se sanean los datos con strip_tags
 		$categoria = strip_tags(trim($_POST['idcategoria']));
 	    $porcentaje = strip_tags(trim($_POST['porcentaje']));
 	    function mthModificar($categoria, $porcentaje, $id)

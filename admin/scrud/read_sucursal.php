@@ -19,6 +19,7 @@
 					$tabla .= "<li class='collection-item dismissable'>";
 						$tabla .= "<div>";     							
 							$tabla .= "<p id='texto_tabla'>";
+							//Se usa htmlspecialchars para escapear datos
 								$tabla .= "<strong>Pais: </strong>".htmlspecialchars($datos['nombre_pais'])."<br>";
 								$tabla .= "<strong>Estado: </strong>".htmlspecialchars($datos['estado'])."<br>";
 								$tabla .= "<strong>Ciudad: </strong>".htmlspecialchars($datos['ciudad'])."<br>";

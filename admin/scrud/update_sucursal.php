@@ -11,6 +11,7 @@
 	if(!empty($_POST))
 	{
 		//Post values
+		//Se sanean los datos con strip_tags
 		$pais = strip_tags(trim($_POST['cmbpais']));
 	    $estado = strip_tags(trim($_POST['estado']));
 		$ciudad = strip_tags(trim($_POST['ciudad']));

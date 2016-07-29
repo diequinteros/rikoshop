@@ -1,6 +1,20 @@
-<?php
+
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Perfil</title>
+        <!-- Se enlazan las hojas de estilo del sitio -->
+        <?php include '../inc/styles.php'; ?>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <?php
+    require("../bibliotecas/database.php");
+     include '../inc/menu2.php'; 
+     ?>
+    <?php
 //Se relaciona la clase de la conexion a nuestra base
-require("../bibliotecas/database.php");
+
 
 if(!empty($_POST))
 {
@@ -58,16 +72,6 @@ else
     $apellido = $data['apellido'];
 }
 ?>
-<!DOCTYPE html>
-<html lang="es">
-    <head>
-        <title>Perfil</title>
-        <!-- Se enlazan las hojas de estilo del sitio -->
-        <?php include '../inc/styles.php'; ?>
-        <meta charset="utf-8">
-    </head>
-    <body>
-    <?php include '../inc/menu2.php'; ?>
         <div class="titulo">
             <h3>Tu perfil</h3>
         </div>

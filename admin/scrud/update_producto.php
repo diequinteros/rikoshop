@@ -7,6 +7,7 @@
 	$idf3 = null;
 	$idf4 = null;
     if(!empty($_GET['id'])) {
+		//Se sanean los datos con strip_tags y luego se descifran con base64_decode
         $id = strip_tags(trim(base64_decode($_GET['id'])));
 		$idf1 = strip_tags(trim(base64_decode($_GET['idf1'])));
 		$idf2 = strip_tags(trim(base64_decode($_GET['idf2'])));
@@ -19,6 +20,7 @@
     
 	if(!empty($_POST))
 	{
+		//Se sanean los datos con strip_tags
 		$nombre = strip_tags(trim($_POST['nombre']));
         $descripcion = strip_tags(trim($_POST['descripcion']));
         $precio = strip_tags(trim($_POST['precio']));

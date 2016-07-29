@@ -2,6 +2,7 @@
 	require("../bibliotecas/database.php");
 	$id = null;
     if(!empty($_GET['id'])) {
+		//se sanean los datos con strip_tags
         $id = strip_tags(trim(base64_decode($_GET['id'])));
     }
     if($id == null) {
@@ -12,6 +13,7 @@
 	{
 		//Post values
 		//Campos del formulario.
+		//Se sanean los datos con strip_tags
         $usuario = strip_tags(trim($_POST['usuario']));
 		$email = strip_tags(trim($_POST['email']));
 		$nombre = strip_tags(trim($_POST['nombre']));

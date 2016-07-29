@@ -14,6 +14,7 @@
        if(!empty($_POST)){
           if($_POST["search"]!=null)
           {
+              //Se cifran los datos antes de enviar
               $dataE = base64_encode($_POST['search']);
               header("location: busqueda.php?busque={$dataE}");
           }

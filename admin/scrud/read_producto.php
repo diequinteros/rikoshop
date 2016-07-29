@@ -54,6 +54,7 @@ $datos2;
 						}
 						$dataE = base64_encode($datos['id_producto']);     							
 							$tabla .= "<p id='texto_tabla'>";
+							//Se usa htmlspecialchars para escapar los datos
 								$tabla .= "<strong>Nombre producto: </strong>".htmlspecialchars($datos['nombre_producto'])."<br>";
 								$tabla .= "<strong>Descripcion: </strong>".htmlspecialchars($datos['descripcion_pro'])."<br>";
 								$tabla .= "<strong>Precio: </strong>".htmlspecialchars($datos[precio])."<br>";

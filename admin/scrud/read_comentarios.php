@@ -19,6 +19,7 @@
 					$tabla .= "<li class='collection-item dismissable'>";
 						$tabla .= "<div>";     							
 							$tabla .= "<p id='texto_tabla'>";
+							//Se escapan los datos con htmlspecialchars
 							$tabla .= "<strong>Usuario: </strong>".htmlspecialchars($datos['id_comentario'])."<br>";
 								$tabla .= "<strong>Usuario: </strong>".htmlspecialchars($datos['usuario'])."<br>";
 								$tabla .= "<strong>Titulo: </strong>".htmlspecialchars($datos['titulo'])."<br>";

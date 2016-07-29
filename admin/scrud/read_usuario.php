@@ -19,6 +19,7 @@
 					$tabla .= "<li class='collection-item dismissable'>";
 						$tabla .= "<div>";     							
 							$tabla .= "<p id='texto_tabla'>";
+							//Se usa htmlspecialchars para escapear los datos
 								$tabla .= "<strong>Usuario: </strong>".htmlspecialchars($datos['usuario'])."<br>";
 								$tabla .= "<strong>E-mail: </strong>".htmlspecialchars($datos['email'])."<br>";
 								$tabla .= "<strong>Contraseña: </strong type = 'password'>".htmlspecialchars($datos['clave'])."<br>";

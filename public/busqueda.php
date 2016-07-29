@@ -11,6 +11,7 @@
       <?php
        include '../inc/menu2.php';
        if(!empty($_POST)){
+           //se sanean los datos con strip_tags
           if(strip_tags(trim($_POST["search"]))!=null)
           {
               $dataE = base64_encode($_POST['search']);

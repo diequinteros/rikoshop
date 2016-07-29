@@ -19,6 +19,7 @@
 					$tabla .= "<li class='collection-item dismissable'>";
 						$tabla .= "<div>";     							
 							$tabla .= "<p id='texto_tabla'>";
+							//Se escapan los datos con htmlspecialchars
 								$tabla .= "<strong>Categoria: </strong>"htmlspecialchars($datos['categoria'])"<br>";
 								$tabla .= "<strong>Porcentaje: </strong>".htmlspecialchars($datos['porcentaje'])."<br>";
 							$tabla .= "</p>";
