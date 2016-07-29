@@ -39,11 +39,22 @@ if(isset($_POST["g-recaptcha-response"]) && $_POST["g-recaptcha-response"])
                         {
                             if(trim($usuario) != "" && trim($email) != "" && trim($clave1) != "" && trim($clave2) != "" && trim($id_pais) != "" && trim($estado) != "" && trim($ciudad) != "" && trim($direccion) != "" && trim($codigo_postal) != "" && trim($tarjeta) != "" && trim($telefono) != "" && trim($nombre) != "" && trim($apellido) != "")
                             {
-                                if($clave1 == $clave2)
-                                //Se agregan los datos
-                                $clave = password_hash($clave1, PASSWORD_DEFAULT);
-                                $sql = "INSERT INTO usuarios (usuario, id_tipo, email, clave, id_pais, estado, ciudad, direccion, codigo_postal, tarjeta, telefono, nombre, apellido) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                                $params = array($usuario, $id_tipo, $email, $clave, $id_pais, $estado, $ciudad, $direccion, $codigo_postal, $tarjeta, $telefono, $nombre, $apellido);
+                                if($clave1 == $clave2){
+                                    if($clave1 != $usuario){
+                                        //Se agregan los datos
+                                        $clave = password_hash($clave1, PASSWORD_DEFAULT);
+                                        $sql = "INSERT INTO usuarios (usuario, id_tipo, email, clave, id_pais, estado, ciudad, direccion, codigo_postal, tarjeta, telefono, nombre, apellido) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                                        $params = array($usuario, $id_tipo, $email, $clave, $id_pais, $estado, $ciudad, $direccion, $codigo_postal, $tarjeta, $telefono, $nombre, $apellido);
+                                    }
+                                    else{
+                                        //Si la clave es igual al nombre de usuario, no deja pasar
+                                        throw new Exception("La clave y el nombre de usuario no pueden ser iguales.");
+                                    }
+                                }
+                                else{
+                                    //Si las claves no son iguales, no deja pasar
+                                    throw new Exception("Las claves no coinciden.");
+                                }
                             }
                             else
                             {
