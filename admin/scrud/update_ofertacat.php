@@ -2,7 +2,7 @@
 	require("../bibliotecas/database.php");
 	$id = null;
     if(!empty($_GET['id'])) {
-        $id = $_GET['id'];
+        $id = strip_tags(trim(base64_decode($_GET['id'])));
     }
     if($id == null) {
         header("location: read_ofertacat.php");
@@ -11,8 +11,8 @@
 	if(!empty($_POST))
 	{
 		//Post values
-		$categoria = $_POST['idcategoria'];
-	    $porcentaje = $_POST['porcentaje'];
+		$categoria = strip_tags(trim($_POST['idcategoria']));
+	    $porcentaje = strip_tags(trim($_POST['porcentaje']));
 	    function mthModificar($categoria, $porcentaje, $id)
 	    {
 

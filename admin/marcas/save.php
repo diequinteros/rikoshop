@@ -39,7 +39,7 @@ else{
                             <h3>Modificar una Marca</h3>
                         </div>";
     print $head;
-    $id = $_GET['id'];
+    $id = strip_tags(trim(base64_decode($_GET['id'])));
     $sql = "SELECT * FROM marcas WHERE id_marca = ?";
     $params = array($id);
     $data = Database::getRow($sql, $params);
@@ -48,7 +48,7 @@ else{
 
 if(!empty($_POST))
 {
-  	$nombre_marca = $_POST['marca'];
+  	$nombre_marca = strip_tags(trim($_POST['marca']));
     //Se declaran las consultas
     try 
     {
@@ -76,7 +76,7 @@ if(!empty($_POST))
                 <div class='row titulo'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>store</i>
-                        <input id='marca' type='text' name='marca' class='validate' length='25' maxlength='25' value='<?php print($nombre_marca); ?>' required/>
+                        <input id='marca' type='text' name='marca' class='validate' length='25' maxlength='25' value='<?php print(htmlspecialchars($nombre_marca)); ?>' required/>
                         <label class="active" for='marca'>Marca</label>
                     </div>
                     <br>

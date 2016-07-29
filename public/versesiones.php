@@ -1,4 +1,7 @@
  <!DOCTYPE html>
+ <?php
+ require("../bibliotecas/database.php");
+ ?>
   <html>
     <head>
       <?php include '../inc/styles.php' ?>
@@ -27,18 +30,19 @@
       <!-- C O N T E N E D O R -->
       <h2 class="center-align">Categorias</h2>
       <div class="container white z-depth-5">
-      <div class="collection">
+      <ul class="collection">
       <?php
-      require("../bibliotecas/database.php");
+      
       //Se seleccionan el id de categoria y su nombre
-      $sql = "SELECT id_categoria, categoria FROM categorias";
-      foreach (Database::getRows($sql, null) as $categorias) {
-          $dataE = base64_encode($categorias['id_categoria']);
+      $sql = "SELECT id_sesion, fecha, os FROM sesiones WHERE usuario = ?";
+      $params = array($_SESSION['id_usuario']);
+      foreach (Database::getRows($sql, $params) as $sesions) {
+          $dataE = base64_encode($sesions['id_sesion']);
           //por cada categoria se imprimira su opcion con el nombre y la direccion mas el id de la categoria
-          print("<a href=categoria.php?id={$dataE} class='collection-item'>$categorias[categoria]</a>");
+          print("<li class='collection-item'><div> Sistema operativo: ".htmlspecialchars($sesions['os'])." Fecha de inicio: ".htmlspecialchars($sesions['fecha'])." <a href='cerrarses.php?id={$dataE}' class='secondary-content'><i class='material-icons'>clear</i></a></div></li>");
       }
       ?>
-      </div>
+      </ul>
       <!-- F I N - P R O D U C T O S - M A S - V E N D I D O -->          
       </div>
       <!-- F I N - C O N T E N E D O R -->

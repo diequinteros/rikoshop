@@ -12,7 +12,8 @@
       if(!empty($_POST)){
           if($_POST["search"]!=null)
           {
-              header("location: busqueda.php?busque=$_POST[search]");
+              $dataE = base64_encode($_POST['search']);
+              header("location: busqueda.php?busque={$dataE}");
           }
       }
       ?>
@@ -30,7 +31,7 @@
       $valo = 1;
         Database::connect();
         #Se obtiene id del producto
-        $id = $_GET ['id'];
+        $id = strip_tags(trim(base64_decode($_GET['id'])));
         #Se seleccionan los datos del producto seleccionado
         $sql = "SELECT id_producto, nombre_producto, descripcion_pro, precio, marca, categoria FROM productos, marcas, categorias WHERE productos.id_marca = marcas.id_marca AND productos.id_categoria = categorias.id_categoria AND id_producto = ?";
         $params = array($id);
@@ -46,9 +47,9 @@
                 //Se obtienen los valores del post
                 $_POST = Validator::validateForm($_POST);
                 $idusuario = $_SESSION['id_usuario'];
-                $titulo = $_POST['coment'];
-                $contenido = $_POST['contecoment'];
-                $valo = $_POST['valo'];
+                $titulo = strip_tags(trim($_POST['coment']));
+                $contenido = strip_tags(trim($_POST['contecoment']));
+                $valo = strip_tags(trim($_POST['valo']));
                 //Se verifica que el usuario este logueado
                 if($idusuario == "")
                 {
@@ -77,17 +78,17 @@
       ?>
       <!-- C O N T E N E D O R -->
       <div class="container white z-depth-5">
-      <h1><?php print($nombre_produc); ?></h1>  
+      <h1><?php print(htmlspecialchars($nombre_produc)); ?></h1>  
       <div class="row">
         <!-- I N I C I O - D E - S L I D E R -->
         <div class="col s12 m6 l6">
           <div id="este-st" class="slider">
             <ul class="slides materialboxed">
             <?php
-              $cons = "SELECT imagen FROM imagenes, productos WHERE imagenes.id_producto = 10";
+              $cons = "SELECT imagen FROM imagenes, productos WHERE imagenes.id_producto = ?";
               $lis = null;
               //Se cargan las imagenes del producto en el slider
-              foreach (Database::getRows($cons, null) as $imagenes) {
+              foreach (Database::getRows($cons, array($id)) as $imagenes) {
                   $lis = "<li>
                   <img src='data:image/*;base64,$imagenes[imagen]'>
                 <div class='caption center-align'>
@@ -109,7 +110,7 @@
         <?php
         //Se selecciona el promedio de valoraciones del producto
         $sqlvaloraciones = "SELECT AVG(valoracion) prom FROM comentarios WHERE id_producto = $id";
-        $prom =Database::getRow($sqlvaloraciones, null);
+        $prom = Database::getRow($sqlvaloraciones, null);
         $prom = round($prom['prom']);
         print("<h5 class='black-text'>Valoracion:</h5>");
         //Se impreme la valoracion
@@ -120,11 +121,11 @@
         </a>
         <!-- Se muestras los datos del producto -->
             <li class="divider"></li>
-            <h6>Precio: <?php print($precio); ?></h6>
+            <h6>Precio: <?php print(htmlspecialchars($precio)); ?></h6>
             <li class="divider"></li>
             <h6>Envio: Gratis</h6>
             <li class="divider"></li>
-            <h6>Marca: <?php print($marca); ?></h6>
+            <h6>Marca: <?php print(htmlspecialchars($marca)); ?></h6>
             <li class="divider"></li>
             <div class="row">
             <h6 class="col s6">Cantidad:</h6><input name="canti" type="text" class="validate col s6">
@@ -144,13 +145,13 @@
             <li>
             <!-- Se muestra la descripcion del producto -->
                 <div class="collapsible-header">Descripcion</div>
-                <div class="collapsible-body"><p><?php print($descripcion); ?></p></div>
+                <div class="collapsible-body"><p><?php print(htmlspecialchars($descripcion)); ?></p></div>
             </li>
             <li>
                 <div class="collapsible-header">Marca</div>
                 <div class="collapsible-body">
                 <!-- Se muestra la marca del producto -->
-                    <p><?php print($marca); ?></p>
+                    <p><?php print(htmlspecialchars($marca)); ?></p>
                     </div>
             </li>
          </ul>
@@ -167,9 +168,9 @@
                foreach (Database::getRows($coment, null) as $comentarios) {
                   $licoment = "<li class='collection-item avatar'>
                         <i class='material-icons circle blue'>person</i>
-                        <span class='title'>$comentarios[usuario]</span>
-                        <p>$comentarios[titulo]<br>
-                        $comentarios[contenido]
+                        <span class='title'>".htmlspecialchars($comentarios['usuario'])."</span>
+                        <p>".htmlspecialchars($comentarios['titulo'])."<br>
+                        ".htmlspecialchars($comentarios['contenido'])."
                         </p>
                         <a class='secondary-content'>";
                         for ($i=0; $i < $comentarios['valoracion'] ; $i++) { 

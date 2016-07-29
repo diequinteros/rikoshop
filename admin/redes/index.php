@@ -36,7 +36,7 @@
 		<?php
 		if(!empty($_POST))
 		{
-			$search = trim($_POST['buscar']);
+			$search = strip_tags(trim($_POST['buscar']));
 			$sql = "SELECT * FROM redes WHERE red LIKE ? ORDER BY id_red";
 			$params = array("%$search%");
 		}
@@ -62,10 +62,11 @@
 								<tbody>";
 				foreach($data as $row)
 				{
+					$dataE = base64_encode($row['id_red']);
 					$tabla .= 	"<tr>
-									<td>$row[id_red]</td>
-									<td>$row[red]</td>
-									<td>$row[url]</td>
+									<td>".htmlspecialchars($row['id_red'])."</td>
+									<td>".htmlspecialchars($row['red'])."</td>
+									<td>".htmlspecialchars($row['url'])."</td>
 									<td>
 										<a href='save.php?id=$row[id_red]' class='btn blue'><i class='material-icons'>edit</i></a>
 										<a href='delete.php?id=$row[id_red]' class='btn red'><i class='material-icons'>delete</i></a>

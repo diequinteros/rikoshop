@@ -36,7 +36,7 @@
 		<?php
 		if(!empty($_POST))
 		{
-			$search = trim($_POST['buscar']);
+			$search = strip_tags(trim($_POST['buscar']));
 			$sql = "SELECT * FROM paises WHERE nombre_pais LIKE ? ORDER BY id_pais";
 			$params = array("%$search%");
 		}
@@ -59,14 +59,16 @@
 									</tr>
 								</thead>
 								<tbody>";
+								
 				foreach($data as $row)
 				{
+					$dataE = base64_encode($row['id_pais']);
 					$tabla .= 	"<tr>
-									<td>$row[id_pais]</td>
-									<td>$row[nombre_pais]</td>
+									<td>".htmlspecialchars($row['id_pais'])."</td>
+									<td>".htmlspecialchars($row['nombre_pais'])."</td>
 									<td>
-										<a href='save.php?id=$row[id_pais]' class='btn blue'><i class='material-icons'>edit</i></a>
-										<a href='delete.php?id=$row[id_pais]' class='btn red'><i class='material-icons'>delete</i></a>
+										<a href='save.php?id={$dataE}' class='btn blue'><i class='material-icons'>edit</i></a>
+										<a href='delete.php?id={$dataE}' class='btn red'><i class='material-icons'>delete</i></a>
 									</td>
 								</tr>";
 				}

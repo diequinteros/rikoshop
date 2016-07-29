@@ -4,7 +4,7 @@ require("../../bibliotecas/database.php");
 //Se verifica que el id tenga un valor
 if(!empty($_GET['id'])) 
 {
-    $id = $_GET['id'];
+    $id = strip_tags(trim(base64_decode($_GET['id'])));
 }
 //De lo contrario devuelve al index
 else
@@ -15,7 +15,7 @@ else
 //Se envian los parametros a nuestra clase executeRows para la funcion delete 
 if(!empty($_POST))
 {
-	$id = $_POST['id'];
+	$id = strip_tags(trim($_POST['id']));
 	try 
 	{
 		$sql = "DELETE FROM redes WHERE id_red = ?";
@@ -46,7 +46,7 @@ if(!empty($_POST))
 			<div class="titulo">
 				<h3>¿Eliminar red social?</h3>
 				<form method='post' class='row' autocomplete="off">
-					<input type='hidden' name='id' value='<?php print($id); ?>'/>
+					<input type='hidden' name='id' value='<?php print(htmlspecialchars($id)); ?>'/>
 					<button type='submit' class='btn red'><i class='material-icons right'>check_circle</i>Si</button>
 					<a href='index.php' class='btn grey'><i class='material-icons right'>cancel</i>No</a>
 				</form>

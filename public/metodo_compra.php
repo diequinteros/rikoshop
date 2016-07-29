@@ -77,9 +77,9 @@
                                 $imgc = "SELECT imagen FROM imagenes WHERE id_producto = $datos[id_producto] LIMIT 0,1";
                                 $img = Database::getRow($imgc, null);
                         $tbl .=    "<td><img class='responsive img' width='150' src='data:image/*;base64,$img[imagen]'></td>
-                                    <td>$datos[nombre_producto]</td>
-                                    <td>$datos[precio]</td>
-                                    <td>$datos[cantidad]</td>";
+                                    <td>".htmlspecialchars($datos['nombre_producto'])."</td>
+                                    <td>".htmlspecialchars($datos['precio'])."</td>
+                                    <td>".htmlspecialchars($datos['cantidad'])."</td>";
                         $to = $datos['precio']*$datos['cantidad'];
                         $total = $total + $to;            
                         $tbl .=    "<td>$to</td>
@@ -104,13 +104,13 @@
             <div class="row">
                 <div class="col s6 l4 offset-s6 offset-l8">
                 <?php
-                   print("Subtotal: $".$total); 
+                   print("Subtotal: $".htmlspecialchars($total)); 
                 ?>
                     <br>
                     Envio: $0.00
                     <div class="divider"></div>
                     <h4><?php
-                   print("Total: $".$total); 
+                   print("Total: $".htmlspecialchars($total)); 
                 ?></h4>
                 </div>
             </div>

@@ -40,7 +40,7 @@ else{
                             <h3>Modificar una Oferta</h3>
                         </div>";
     print $head;
-    $id = $_GET['id'];
+    $id = strip_tags(trim(base64_decode($_GET['id'])));
     $sql = "SELECT * FROM ofertas_producto WHERE id_oferta_p = ?";
     $params = array($id);
     $data = Database::getRow($sql, $params);
@@ -50,8 +50,8 @@ else{
 
 if(!empty($_POST))
 {
-  	$id_producto = $_POST['id_producto'];
-    $porcentaje = $_POST['porcentaje'];
+  	$id_producto = strip_tags(trim($_POST['id_producto']));
+    $porcentaje = strip_tags(trim($_POST['porcentaje']));
     //Se declaran las consultas
     try 
     {
@@ -104,7 +104,7 @@ if(!empty($_POST))
                     <br>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>%</i>
-                        <input id='porcentaje' type="text" name='porcentaje' class='validate' length='4' maxlength='4' value='<?php print($porcentaje); ?>'/>
+                        <input id='porcentaje' type="text" name='porcentaje' class='validate' length='4' maxlength='4' value='<?php print(htmlspecialchars($porcentaje)); ?>'/>
                         <label class="active" for='porcentaje'>Porcentaje</label>
                     </div>
                 </div>

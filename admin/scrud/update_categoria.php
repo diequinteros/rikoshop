@@ -2,7 +2,7 @@
 	require("../bibliotecas/database.php");
 	$id = null;
     if(!empty($_GET['id'])) {
-        $id = $_GET['id'];
+        $id = strip_tags(trim(base64_decode($_GET['id'])));
     }
     if($id == null) {
         header("location: read_categoria.php");
@@ -11,8 +11,8 @@
 	if(!empty($_POST))
 	{
 		//Post values
-		$ncategoria = $_POST['categoria'];
-	    $descripcion = $_POST['descripcion'];
+		$ncategoria = strip_tags(trim($_POST['categoria']));
+	    $descripcion = strip_tags(trim($_POST['descripcion']));
 	    function mthModificar($ncategoria, $descripcion, $id)
 	    {
 

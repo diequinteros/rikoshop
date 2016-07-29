@@ -17,19 +17,19 @@
           <h2 class="center-align">Agregar administrador</h2>
            <form  action="<?php $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data" autocomplete="off">
                <div class="input-field col s6">
-                    <input disabled name="usuario" type="text" class="validate" value="<?php print($usuario); ?>">
+                    <input disabled name="usuario" type="text" class="validate" value="<?php print(htmlspecialchars($usuario)); ?>">
                     <label for="usuario">Nombre usuario</label>
                </div>
                <div class="input-field col s6">
-                    <input  name="email" type="text" class="validate" value="<?php print($email); ?>">
+                    <input  name="email" type="text" class="validate" value="<?php print(htmlspecialchars($email)); ?>">
                     <label for="email">E-mail</label>
                </div>
                <div class="input-field col s6">
-                    <input  name="nombre" type="text" class="validate"  value="<?php print($nombre); ?>">
+                    <input  name="nombre" type="text" class="validate"  value="<?php print(htmlspecialchars($nombre)); ?>">
                     <label for="nombre">Nombre</label>
                </div>
                <div class="input-field col s6">
-                    <input  name="apellido" type="text" class="validate"  value="<?php print($apellido); ?>">
+                    <input  name="apellido" type="text" class="validate"  value="<?php print(htmlspecialchars($apellido)); ?>">
                     <label for="apellido">Apellido</label>
                </div>
                <div class="row">

@@ -3,7 +3,7 @@ require("../bibliotecas/database.php");
 include("../inc/styles.php");
     if(!empty($_GET['idselec']))
     {
-        $idselec = $_GET['idselec'];
+        $idselec = strip_tags(trim($_GET['idselec']));
     }
     else{
     header("location: metodo_compra.php");

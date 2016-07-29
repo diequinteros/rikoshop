@@ -3,7 +3,7 @@
 				Database::connect();
     			if(isset($_POST['txtBuscar']) != "")
     			{
-    				$buscar = $_POST['txtBuscar'];
+    				$buscar = strip_tags(trim($_POST['txtBuscar']));
     				$consulta = "SELECT id_sucusales, paises.nombre_pais, estado, ciudad, direccion, telefono FROM sucursales, paises WHERE sucursales.id_pais = paises.id_pais  AND paises.nombre_pais LIKE '%$buscar%'";
     			}
     			else
@@ -14,15 +14,16 @@
     			$tabla = ""; //Arreglo de datos
     			foreach(Database::$connection->query($consulta) as $datos)
     			{
+					$dataE = base64_encode($datos['id_sucusales']);
 					$tabla .= "<ul class='collection'>";
 					$tabla .= "<li class='collection-item dismissable'>";
 						$tabla .= "<div>";     							
 							$tabla .= "<p id='texto_tabla'>";
-								$tabla .= "<strong>Pais: </strong>$datos[nombre_pais]<br>";
-								$tabla .= "<strong>Estado: </strong>$datos[estado]<br>";
-								$tabla .= "<strong>Ciudad: </strong>$datos[ciudad]<br>";
-								$tabla .= "<strong>Direccion: </strong>$datos[direccion]<br>";
-								$tabla .= "<strong>Telefono: </strong>$datos[telefono]<br>";
+								$tabla .= "<strong>Pais: </strong>".htmlspecialchars($datos['nombre_pais'])."<br>";
+								$tabla .= "<strong>Estado: </strong>".htmlspecialchars($datos['estado'])."<br>";
+								$tabla .= "<strong>Ciudad: </strong>".htmlspecialchars($datos['ciudad'])."<br>";
+								$tabla .= "<strong>Direccion: </strong>".htmlspecialchars($datos['direccion'])."<br>";
+								$tabla .= "<strong>Telefono: </strong>".htmlspecialchars($datos['telefono'])."<br>";
 							$tabla .= "</p>";
 							$tabla .= "<div class = 'row'>";
 							$tabla .= "<a class='btn waves-effect waves-light light-blue col s12 m4 l2' href='update_sucursal.php?id=$datos[id_sucusales]'>Modificar<i id='img_btn' class='material-icons left'>mode_edit</i></a>";

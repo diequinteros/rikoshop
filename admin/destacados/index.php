@@ -36,7 +36,7 @@
 		<?php
 		if(!empty($_POST))
 		{
-			$search = trim($_POST['buscar']);
+			$search = strip_tags(trim($_POST['buscar']));
 			$sql = "SELECT * FROM destacados WHERE titulo LIKE ? ORDER BY id_destacado";
 			$params = array("%$search%");
 		}
@@ -62,13 +62,14 @@
 								<tbody>";
 				foreach($data as $row)
 				{
+					$dataE = base64_encode($row['id_destacado']);
 					$tabla .= 	"<tr>
-									<td>$row[id_destacado]</td>
+									<td>".htmlspecialchars($row['id_destacado'])."</td>
 									<td><img class='responsive-img' src='data:image/*;base64,$row[imagen]' width='100'/></td>
-									<td>$row[titulo]</td>
+									<td>".htmlspecialchars($row[titulo])."</td>
 									<td>
-										<a href='save.php?id=$row[id_destacado]' class='btn blue'><i class='material-icons'>edit</i></a>
-										<a href='delete.php?id=$row[id_destacado]' class='btn red'><i class='material-icons'>delete</i></a>
+										<a href='save.php?id={$dataE}' class='btn blue'><i class='material-icons'>edit</i></a>
+										<a href='delete.php?id={$dataE}' class='btn red'><i class='material-icons'>delete</i></a>
 									</td>
 								</tr>";
 				}

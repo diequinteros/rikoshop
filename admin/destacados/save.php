@@ -41,7 +41,7 @@ else{
                             <h3>Modificar un anuncio</h3>
                         </div>";
     print $head;
-    $id = $_GET['id'];
+    $id = strip_tags(trim(base64_decode($_GET['id'])));
     $sql = "SELECT * FROM destacados WHERE id_destacado = ?";
     $params = array($id);
     $data = Database::getRow($sql, $params);
@@ -52,7 +52,7 @@ else{
 if(!empty($_POST))
 {
   	$archivo = $_FILES['imagen'];
-    $titulo = $_POST['titulo'];
+    $titulo = strip_tags(trim($_POST['titulo']));
     if($archivo['name'] != null)
     {
         $base64 = Imagen::validateImage($archivo);
@@ -108,7 +108,7 @@ if(!empty($_POST))
                     </div>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>edit</i>
-                        <input id='titulo' type="text" name='titulo' class='validate' length='50' maxlength='50' value='<?php print($titulo); ?>'/>
+                        <input id='titulo' type="text" name='titulo' class='validate' length='50' maxlength='50' value='<?php print(htmlspecialchars($titulo)); ?>'/>
                         <label class="active" for='titulo'>Título</label>
                     </div>
                 </div>

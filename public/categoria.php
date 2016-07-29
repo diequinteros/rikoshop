@@ -11,12 +11,13 @@
        if(!empty($_POST)){
           if($_POST["search"]!=null)
           {
-              header("location: busqueda.php?busque=$_POST[search]");
+              $dataE = base64_encode($_POST['search']);
+              header("location: busqueda.php?busque={$dataE}");
           }
       }
        //Se verifica que la variable id de categoria este cargada
        if(!empty($_GET['id'])) {
-            $id = $_GET['id'];
+            $id = strip_tags(trim(base64_decode($_GET['id'])));
         }
         else {
             header("location:index.php");
@@ -50,7 +51,7 @@
       <!-- C O N T E N E D O R -->
       <div class="container white z-depth-5">  
         <!-- E N C A B E Z A D O - D E - P A G I N A -->
-        <h2><?php print($nombre['categoria']); ?></h2>
+        <h2><?php print(htmlspecialchars($nombre['categoria'])); ?></h2>
         <li class="divider"></li>
         <br>
         <div class = "row">
@@ -59,7 +60,7 @@
         $page = null;
         //Se toma la variable de paginacion
         if(!empty($_GET['page'])) {
-            $page = $_GET['page'];
+            $page = strip_tags(trim($_GET['page']));
         }
         //Si la variable de paginacion esta vacia se pone como 1
         if($page == null) {
@@ -78,6 +79,7 @@
         $consulta = "SELECT * FROM productos WHERE id_categoria = $id LIMIT $page1,24";
         foreach(Database::$connection->query($consulta) as $datos)
     			{
+                    $datosE = base64_encode($datos['id_producto']);
                     //Se imprimen cada producto
                     $card = "       <!-- TARJETA 1 -->
                     <div class='card col s12 m6 l4'>
@@ -87,12 +89,12 @@
                         $card .= "<img src='data:image/*;base64,$img[imagen]' class='activator' height='300'>";
                         $card .= "</div>
                         <div class='card-content'>";
-                        $card .= "<span class='card-title activator grey-text text-darken-4'>$datos[nombre_producto]<i class='material-icons right'>more_vert</i></span>";
-                        $card .= "<p><a href='detalles_productos.php?id=$datos[id_producto]'>Mas información</a></p>";
+                        $card .= "<span class='card-title activator grey-text text-darken-4'>".htmlspecialchars($datos['nombre_producto'])."<i class='material-icons right'>more_vert</i></span>";
+                        $card .= "<p><a href='detalles_productos.php?id={$datosE}'>Mas información</a></p>";
                         $card .= "</div>
                         <div class='card-reveal'>";
-                        $card .= "<span class='card-title grey-text text-darken-4'>$datos[nombre_producto]<i class='material-icons right'>close</i></span>";
-                        $card .=  "<p>$datos[descripcion_pro]</p>
+                        $card .= "<span class='card-title grey-text text-darken-4'>".htmlspecialchars($datos['nombre_producto'])."<i class='material-icons right'>close</i></span>";
+                        $card .=  "<p>".htmlspecialchars($datos['descripcion_pro'])."</p>
                         </div>
                     </div>";
                     print($card);

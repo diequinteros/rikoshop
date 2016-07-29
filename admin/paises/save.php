@@ -39,7 +39,7 @@ else{
                             <h3>Modificar un Pais</h3>
                         </div>";
     print $head;
-    $id = $_GET['id'];
+    $id = strip_tags(trim(base64_decode($_GET['id'])));
     $sql = "SELECT * FROM paises WHERE id_pais = ?";
     $params = array($id);
     $data = Database::getRow($sql, $params);
@@ -48,7 +48,7 @@ else{
 
 if(!empty($_POST))
 {
-  	$nombre_pais = $_POST['pais'];
+  	$nombre_pais = strip_tags(trim($_POST['pais']));
     //Se declaran las consultas
     try 
     {
@@ -76,7 +76,7 @@ if(!empty($_POST))
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>flag</i>
-                        <input id='pais' type="text" name='pais' class='validate' length='50' maxlength='50' value='<?php print($nombre_pais); ?>'/>
+                        <input id='pais' type="text" name='pais' class='validate' length='50' maxlength='50' value='<?php print(htmlspecialchars($nombre_pais)); ?>'/>
                         <label class="active" for='pais'>Nombre del País</label>
                     </div>
                 </div>

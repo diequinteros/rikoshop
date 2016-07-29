@@ -5,7 +5,7 @@ $datos2;
 				Database::connect();
     			if(isset($_POST['txtBuscar']) != "")
     			{
-    				$buscar = $_POST['txtBuscar'];
+    				$buscar = strip_tags(trim($_POST['txtBuscar']));
     				$consulta = "SELECT id_producto, nombre_producto, descripcion_pro, precio, marcas.marca, categorias.categoria, existencia FROM productos, marcas, categorias WHERE productos.id_marca = marcas.id_marca AND productos.id_categoria = categorias.id_categoria AND nombre_producto LIKE '%$buscar%'";
 					
     			}
@@ -31,33 +31,34 @@ $datos2;
 						$tabla .= "<img id='foto_perfil' src='data:image/*;base64,$datos2[imagen]' class='responsive-img' width='230'>";
 						if($idfo1 == null)
 						{
-							$idfo1 = $datos2['id_imagen'];
+							$idfo1 = base64_encode($datos2['id_imagen']);
 						}
 						else {
 							if($idfo2 == null)
 							{
-								$idfo2 = $datos2['id_imagen'];
+								$idfo2 = base64_encode($datos2['id_imagen']);
 							}
 							else {
 								if($idfo3 == null)
 								{
-									$idfo3 = $datos2['id_imagen'];
+									$idfo3 = base64_encode($datos2['id_imagen']);
 								}
 								else {
 									if($idfo4 == null)
 									{
-										$idfo4 = $datos2['id_imagen'];
+										$idfo4 = base64_encode($datos2['id_imagen']);
 									}
 								}
 							}
 						}	
-						}     							
+						}
+						$dataE = base64_encode($datos['id_producto']);     							
 							$tabla .= "<p id='texto_tabla'>";
-								$tabla .= "<strong>Nombre producto: </strong>$datos[nombre_producto]<br>";
-								$tabla .= "<strong>Descripcion: </strong>$datos[descripcion_pro]<br>";
-								$tabla .= "<strong>Precio: </strong>$datos[precio]<br>";
-								$tabla .= "<strong>Marca: </strong>$datos[marca]<br>";
-								$tabla .= "<strong>Existencias: </strong>$datos[existencia]<br>";
+								$tabla .= "<strong>Nombre producto: </strong>".htmlspecialchars($datos['nombre_producto'])."<br>";
+								$tabla .= "<strong>Descripcion: </strong>".htmlspecialchars($datos['descripcion_pro'])."<br>";
+								$tabla .= "<strong>Precio: </strong>".htmlspecialchars($datos[precio])."<br>";
+								$tabla .= "<strong>Marca: </strong>".htmlspecialchars($datos['marca'])."<br>";
+								$tabla .= "<strong>Existencias: </strong>".htmlspecialchars($datos['existencia'])."<br>";
 								
 							$tabla .= "</p>";
 							$tabla .= "<div class = 'row'>";

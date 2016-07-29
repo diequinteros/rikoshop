@@ -2,12 +2,12 @@
 	if(!empty($_POST))
 	{
 		//Campos del formulario.
-        $usuario = $_POST['usuario'];
-		$email = $_POST['email'];
-		$clave = $_POST['clave'];
-		$clave2 = $_POST['clave2'];
-		$nombre = $_POST['nombre'];
-		$apellido = $_POST['apellido'];
+        $usuario = strip_tags(trim($_POST['usuario']));
+		$email = strip_tags(trim($_POST['email']));
+		$clave = strip_tags(trim($_POST['clave']));
+		$clave2 = strip_tags(trim($_POST['clave2']));
+		$nombre = strip_tags(trim($_POST['nombre']));
+		$apellido = strip_tags(trim($_POST['apellido']));
 	    function mthAgregar($usuario, $email, $clave, $nombre, $apellido)
 	    {
 	    	require("../bibliotecas/database.php");

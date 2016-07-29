@@ -18,11 +18,11 @@
           <h2 class="center-align">Agregar categoria</h2>
            <form  action="<?php $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data" autocomplete="off">
                <div class="input-field col s6">
-                    <input  name="categoria" type="text" class="validate" value="<?php print($ncategoria); ?>">
+                    <input  name="categoria" type="text" class="validate" value="<?php print(htmlspecialchars($ncategoria)); ?>">
                     <label for="categoria">Categoria</label>
                </div>
                <div class="input-field col s12">
-                  <textarea name="descripcion" class="materialize-textarea" ><?php print($descripcion); ?></textarea>
+                  <textarea name="descripcion" class="materialize-textarea" ><?php print(htmlspecialchars($descripcion)); ?></textarea>
                   <label for="descripcion">Descripción</label>
                </div>
                <div class="row">

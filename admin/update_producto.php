@@ -18,15 +18,15 @@
           <h2 class="center-align">Agregar categoria</h2>
            <form  action="<?php $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data" autocomplete="off">
                <div class="input-field col s6">
-                    <input  name="nombre" type="text" class="validate" value="<?php print($nombre); ?>">
+                    <input  name="nombre" type="text" class="validate" value="<?php print(htmlspecialchars($nombre)); ?>">
                     <label for="nombre">Nombre</label>
                </div>
                <div class="input-field col s12">
-                  <textarea name="descripcion" class="materialize-textarea"><?php print($descripcion); ?>"</textarea>
+                  <textarea name="descripcion" class="materialize-textarea"><?php print(htmlspecialchars($descripcion)); ?>"</textarea>
                   <label for="descripcion">Descripción</label>
                </div>
                <div class="input-field col s6">
-                    <input  name="precio" type="text" class="validate" value="<?php print($precio); ?>">
+                    <input  name="precio" type="text" class="validate" value="<?php print(htmlspecialchars($precio)); ?>">
                     <label for="precio">Precio</label>
                </div>
                <div class="input-field col s6">
@@ -72,7 +72,7 @@
 			   			     </select>
 					      </div>
                 <div class="input-field col s6">
-                    <input  name="existencia" type="text" class="validate"  value="<?php print($existencia); ?>">
+                    <input  name="existencia" type="text" class="validate"  value="<?php print(htmlspecialchars($existencia)); ?>">
                     <label for="existencia">Existencia</label>
                </div>
 			   <?php
@@ -85,7 +85,7 @@
 						          <span><i class="material-icons left">attachment</i>Seleccionar imagen</span>
 						          <input name="imagen1" type="file" multiple/>
 					      	  </div>
-					      	  <input class="file-path validate" type="text" value="<?php print($imagen1); ?>"/>
+					      	  <input class="file-path validate" type="text" value="<?php print(htmlspecialchars($imagen1)); ?>"/>
 					        </div>
 					     </div>
 				<?php
@@ -98,7 +98,7 @@
 						          <span><i class="material-icons left">attachment</i>Seleccionar imagen</span>
 						          <input name="imagen2" type="file" multiple/>
 					      	  </div>
-					      	  <input class="file-path validate" type="text" value="<?php print($imagen2); ?>"/>
+					      	  <input class="file-path validate" type="text" value="<?php print(htmlspecialchars($imagen2)); ?>"/>
 					        </div>
 					     </div>
 				<?php
@@ -111,7 +111,7 @@
 						          <span><i class="material-icons left">attachment</i>Seleccionar imagen</span>
 						          <input name="imagen3" type="file" multiple/>
 					      	  </div>
-					      	  <input class="file-path validate" type="text" value="<?php print($imagen3); ?>"/>
+					      	  <input class="file-path validate" type="text" value="<?php print(htmlspecialchars($imagen3)); ?>"/>
 					        </div>
 					     </div>
 				<?php
@@ -124,7 +124,7 @@
 						          <span><i class="material-icons left">attachment</i>Seleccionar imagen</span>
 						          <input name="imagen4" type="file" multiple/>
 					      	  </div>
-					      	  <input class="file-path validate" type="text" value="<?php print($imagen4); ?>"/>
+					      	  <input class="file-path validate" type="text" value="<?php print(htmlspecialchars($imagen4)); ?>"/>
 					        </div>
 					     </div>
                

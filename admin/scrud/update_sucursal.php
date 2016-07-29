@@ -2,7 +2,7 @@
 	require("../bibliotecas/database.php");
 	$id = null;
     if(!empty($_GET['id'])) {
-        $id = $_GET['id'];
+        $id = strip_tags(trim(base64_decode($_GET['id'])));
     }
     if($id == null) {
         header("location: read_sucursal.php");
@@ -11,11 +11,11 @@
 	if(!empty($_POST))
 	{
 		//Post values
-		$pais = $_POST['cmbpais'];
-	    $estado = $_POST['estado'];
-		$ciudad = $_POST['ciudad'];
-		$direccion = $_POST['direccion'];
-		$telefono = $_POST['telefono'];
+		$pais = strip_tags(trim($_POST['cmbpais']));
+	    $estado = strip_tags(trim($_POST['estado']));
+		$ciudad = strip_tags(trim($_POST['ciudad']));
+		$direccion = strip_tags(trim($_POST['direccion']));
+		$telefono = strip_tags(trim($_POST['telefono']));
 	    function mthModificar($pais, $estado, $ciudad, $direccion, $telefono, $id)
 	    {
 

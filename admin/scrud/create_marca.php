@@ -2,7 +2,7 @@
 	if(!empty($_POST))
 	{
 		//Campos del formulario.
-		$nmarca = $_POST['nmarca'];
+		$nmarca = strip_tags(trim($_POST['nmarca']));
 
 	    function mthAgregar($nmarca)
 	    {

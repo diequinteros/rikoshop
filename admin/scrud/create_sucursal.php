@@ -2,11 +2,11 @@
 	if(!empty($_POST))
 	{
 		//Campos del formulario.
-		$pais = $_POST['cmbPais'];
-        $estado = $_POST['nestado'];
-        $ciudad = $_POST['nciudad'];
-        $direccion = $_POST['ndireccion'];
-        $telefono = $_POST['telefono'];
+		$pais = strip_tags(trim($_POST['cmbPais']));
+        $estado = strip_tags(trim($_POST['nestado']));
+        $ciudad = strip_tags(trim($_POST['nciudad']));
+        $direccion = strip_tags(trim($_POST['ndireccion']));
+        $telefono = strip_tags(trim($_POST['telefono']));
 
 	    function mthAgregar($pais, $estado, $ciudad, $direccion, $telefono)
 	    {

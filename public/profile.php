@@ -5,18 +5,18 @@ require("../bibliotecas/database.php");
 if(!empty($_POST))
 {
     //Se declaran las variables de la consulta
-  	$usuario = $_POST['usuario'];
-  	$email = $_POST['email'];
-    $clave = $_POST['clave'];
-    $id_pais = $_POST['id_pais'];
-    $estado = $_POST['estado'];
-    $ciudad = $_POST['ciudad'];
-    $direccion = $_POST['direccion'];
-    $codigo_postal = $_POST['codigo_postal'];
-    $tarjeta = $_POST['tarjeta'];
-    $telefono = $_POST['telefono'];
-    $nombre = $_POST['nombre'];
-    $apellido = $_POST['apellido'];
+  	$usuario = strip_tags(trim($_POST['usuario']));
+  	$email = strip_tags(trim($_POST['email']));
+    $clave = strip_tags(trim($_POST['clave']));
+    $id_pais = strip_tags(trim($_POST['id_pais']));
+    $estado = strip_tags(trim($_POST['estado']));
+    $ciudad = strip_tags(trim($_POST['ciudad']));
+    $direccion = strip_tags(trim($_POST['direccion']));
+    $codigo_postal = strip_tags(trim($_POST['codigo_postal']));
+    $tarjeta = strip_tags(trim($_POST['tarjeta']));
+    $telefono = strip_tags(trim($_POST['telefono']));
+    $nombre = strip_tags(trim($_POST['nombre']));
+    $apellido = strip_tags(trim($_POST['apellido']));
     try 
     {
       	if($usuario != "" && $email != "" && $clave != "" && $id_pais != "" && $estado != "" && $ciudad != "" && $direccion != "" && $codigo_postal != "" && $tarjeta != "" && $telefono != "" && $nombre != "" && $apellido != "")
@@ -72,7 +72,7 @@ else
             <h3>Tu perfil</h3>
         </div>
         <div class="card-panel paneles">
-            <form method='post' class='row' enctype='multipart/form-data'>
+            <form method='post' class='row' enctype='multipart/form-data' autocomplete='off'>
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>account_circle</i>

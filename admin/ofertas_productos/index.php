@@ -36,7 +36,7 @@
 		<?php
 		if(!empty($_POST))
 		{
-			$search = trim($_POST['buscar']);
+			$search = strip_tags(trim($_POST['buscar']));
 			$sql = "SELECT * FROM ofertas_producto, productos WHERE ofertas_producto.id_producto = productos.id_producto AND nombre_producto LIKE ? ORDER BY id_oferta_p";
 			$params = array("%$search%");
 		}
@@ -60,15 +60,17 @@
 									</tr>
 								</thead>
 								<tbody>";
+								
 				foreach($data as $row)
 				{
+					$dataE = base64_encode($row['id_oferta_p']);
 					$tabla .= 	"<tr>
-									<td>$row[id_oferta_p]</td>
-									<td>$row[nombre_producto]</td>
-									<td>$row[porcentaje]</td>
+									<td>".htmlspecialchars($row['id_oferta_p'])."</td>
+									<td>".htmlspecialchars($row['nombre_producto'])."</td>
+									<td>".htmlspecialchars($row['porcentaje'])."</td>
 									<td>
-										<a href='save.php?id=$row[id_oferta_p]' class='btn blue'><i class='material-icons'>edit</i></a>
-										<a href='delete.php?id=$row[id_oferta_p]' class='btn red'><i class='material-icons'>delete</i></a>
+										<a href='save.php?id={$dataE}' class='btn blue'><i class='material-icons'>edit</i></a>
+										<a href='delete.php?id={$dataE}' class='btn red'><i class='material-icons'>delete</i></a>
 									</td>
 								</tr>";
 				}
