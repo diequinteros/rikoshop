@@ -24,6 +24,7 @@ if(!empty($_POST))
 		    	if(password_verify($clave, $hash)) 
 				//Una vez analizados los datos ingresados, se filtra por el tipo de usuario
 		    	{
+					session_start();
 					$_SESSION['id_usuario'] = $data['id_usuario'];
 						$_SESSION['nombre_usuario'] = $data['usuario'];
 						$_SESSION['tipo'] = $data['id_tipo'];
@@ -81,7 +82,7 @@ if(!empty($_POST))
 				<h3>Iniciar Sesión</h3>
 			</div>
 			<!-- Se crea el formulario de login -->
-			<form class='row' method='post'>
+			<form class='row' method='post' autocomplete = "off">
 				<div class='row'>
 					<div class='input-field col m6 offset-m3 s12'>
 						<i class='material-icons prefix'>person_pin</i>

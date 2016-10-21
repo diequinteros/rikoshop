@@ -27,7 +27,7 @@
             header("location:index.php");
         }
         if($id == null) {
-            header("location: index.php");
+            header("location:index.php");
         }
         
         $nombc = "SELECT categoria FROM categorias WHERE id_categoria = ?";
@@ -122,7 +122,8 @@
                 }
                 //caso contrario esta habilitado
                 else {
-                    $pagi = "<li class='waves-efect'><a href='categoria.php?id=$id&&page=($page-1)'><i class='material-icons'>chevron_left</i></a></li>";
+                    $page2 = $page - 1;
+                    $pagi = "<li class='waves-efect'><a href='categoria.php?id=$id&&page=$page2'><i class='material-icons'>chevron_left</i></a></li>";
                 }
                 //Se imprime cada pagina, si la pagina que se imprimio concide con el numero de pagina que se imprime se imprimira seleccionado
                 for($i = 1; $i<=$filas; $i++) {
@@ -141,7 +142,8 @@
                     $pagi .= "<li class='disabled'><a><i class='material-icons'>chevron_right</i></a></li>";
                 }
                 else {
-                    $pagi .= "<li class='waves-efect'><a href='categoria.php?id=$id&&page=($page+1)'><i class='material-icons'>chevron_right</i></a></li>";
+                    $page2 = ($page+1);
+                    $pagi .= "<li class='waves-efect'><a href='categoria.php?id=$id&&page=$page2'><i class='material-icons'>chevron_right</i></a></li>";
                 }
                 print($pagi);
                 Database::$connection = null;
