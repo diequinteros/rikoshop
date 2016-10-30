@@ -34,6 +34,7 @@
 				<!-- Se incluye el boton de agregar una nueva marca -->
 				<div class='input-field col s12 m4'>
 					<a href='save.php' class='btn indigo'><i class='material-icons right'>add_circle</i>Nueva</a>
+					<a href='reporte_marcas.php' class='btn indigo'><i class='material-icons right'>assignment</i>Reporte de Marcas</a>
 				</div>
 			</form>
 		</div>

@@ -35,6 +35,9 @@
                <a class="btn waves-effect waves-light btn-large red col s2 s12 m4 l2 offset-m1 offset-l1" href="http://localhost/rikoshop/admin/create_producto.php">
 			    	          Nuevo registro<i id="img_btn" class="material-icons left md-36"></i>
 			         </a>
+               <a class="btn waves-effect waves-light btn-large red col s2 s12 m4 l2 offset-m1 offset-l1" href="reporte_productos.php">
+			    	          Reporte de Productos<i id="img_btn" class="material-icons left md-36">assignment</i>
+			         </a>
                </div>
                <?php
                include 'scrud/read_producto.php' 

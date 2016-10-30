@@ -32,6 +32,9 @@
 				       <a class="btn waves-effect waves-light btn-large red col s2 s12 m4 l2 offset-m1 offset-l1" href="../index.php">
 			    	          Cancelar<i id="img_btn" class="material-icons left md-36">clear</i>
 			         </a>
+               <a class="btn waves-effect waves-light btn-large red col s2 s12 m4 l2 offset-m1 offset-l1" href="reporte_ventas.php">
+			    	          Reporte de Ventas<i id="img_btn" class="material-icons left md-36">assignment</i>
+			         </a>
                </div>
                <?php
                include 'scrud/read_ventas.php' 

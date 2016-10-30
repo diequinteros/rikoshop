@@ -134,6 +134,79 @@
             <input name="idpro" type="text" class="validate col s6 hide" value = "<?php print($id); ?>">
             <h6 class="col s6">Cantidad:</h6><input name="canti" type="text" class="validate col s6">
             </div>
+            <div class = "row">
+            <div id="graf"></div>
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            
+            <script type="text/javascript">
+            
+            // Se carga la api de visualizacion y el paquete corecharts de google
+            google.charts.load('current', {'packages':['corechart','bar']});
+
+            // Se hace un callback para que corra cuando el visualizador este cargado
+            google.charts.setOnLoadCallback(drawChart);
+
+            // Callback que crea y llena la tabla de datos
+            // Se crea el grafico y se le pasan los datos y se dibuja
+            function drawChart() {
+
+                // Se crea la tabla de datos
+                var data = new google.visualization.DataTable();
+                //Se agrega la columna de tipo string  con titulo Topping
+                data.addColumn('string', 'Titulo');
+                //Se agrega la columna de tipo numero con titulo Slices
+                data.addColumn('number', 'Valoraciones');
+                //Se agregan las filas
+                <?php
+                $sql1 = "SELECT COUNT(id_comentario) FROM comentarios WHERE valoracion = 1 AND id_producto = ?";
+                $a = Database::getRow($sql1, array($id));
+                $sql2 = "SELECT COUNT(id_comentario) FROM comentarios WHERE valoracion = 2 AND id_producto = ?";
+                $b = Database::getRow($sql2, array($id));
+                $sql2 = "SELECT COUNT(id_comentario) FROM comentarios WHERE valoracion = 3 AND id_producto = ?";
+                $c = Database::getRow($sql2, array($id));
+                $sql2 = "SELECT COUNT(id_comentario) FROM comentarios WHERE valoracion = 4 AND id_producto = ?";
+                $d = Database::getRow($sql2, array($id));
+                $sql2 = "SELECT COUNT(id_comentario) FROM comentarios WHERE valoracion = 5 AND id_producto = ?";
+                $e = Database::getRow($sql2, array($id));
+                if($a[0] == null)
+                {
+                    $a[0] = 0;
+                }
+                if($b[0] == null)
+                {
+                    $b[0] = 0;
+                }
+                if($c[0] == null)
+                {
+                    $c[0] = 0;
+                }
+                if($d[0] == null)
+                {
+                    $d[0] = 0;
+                }
+                if($e[0] == null)
+                {
+                    $e[0] = 0;
+                }
+                print("data.addRows([
+                ['Una estrella.', ".$a[0]."],
+                ['Dos estrellas.', ".$b[0]."],
+                ['Tres estrellas.', ".$c[0]."],
+                ['Cuatro estrellas.', ".$d[0]."],
+                ['Cinco estrellas.', ".$e[0]."],
+                ]);");
+                ?>
+                // Se definen las opciones del grafico
+                var options = {'title':'Grafico de usuarios y sus compras',
+                            'width':500,
+                            'height':250};
+
+                // Se instancia y dibuja nuestro grafico, ademas se pasan las opciones.
+                var chart = new google.visualization.PieChart(document.getElementById('graf'));
+                chart.draw(data, options);
+            }
+        </script>
+            </div>
             <li class="divider"></li>
             <div>
                 <button type="submit" class="waves-effect waves-light btn"><i class="material-icons right">add_shopping_cart</i>Agregar a carretilla</button>
